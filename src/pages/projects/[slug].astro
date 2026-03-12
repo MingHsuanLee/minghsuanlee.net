@@ -1,0 +1,45 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const projects = await getCollection('projects');
+  return projects.map(project => ({
+    params: { slug: project.id },
+    props: { project },
+  }));
+}
+
+const { project } = Astro.props;
+const { Content } = await render(project);
+
+const statusColors: Record<string, string> = {
+  active: 'text-green-400 bg-green-400/10 border-green-400/20',
+  planning: 'text-yellow-400 bg-yellow-400/10 border-yellow-400/20',
+  completed: 'text-white/40 bg-white/5 border-white/10',
+};
+---
+<BaseLayout title={project.data.title} description={project.data.description}>
+  <div class="max-w-3xl mx-auto px-4 sm:px-6 py-20">
+    <a href="/projects" class="text-white/40 hover:text-white text-sm mb-8 block">← Projects</a>
+
+    <div class="flex items-start justify-between gap-4 mb-6 flex-wrap">
+      <h1 class="text-4xl font-bold text-white">{project.data.title}</h1>
+      <span class={`text-xs border px-2.5 py-1 rounded-full font-medium ${statusColors[project.data.status] || statusColors.completed}`}>
+        {project.data.status}
+      </span>
+    </div>
+
+    <p class="text-white/60 text-lg mb-6">{project.data.description}</p>
+
+    <div class="flex flex-wrap gap-2 mb-6">
+      {project.data.tech_stack.map(t => <span class="tag">{t}</span>)}
+    </div>
+
+    <div class="text-white/30 text-sm mb-10">Lead: {project.data.lead_agent.toUpperCase()} · Updated: {project.data.last_updated.toLocaleDateString()}</div>
+
+    <div class="prose prose-invert prose-lg max-w-none prose-a:text-cyan-400 prose-headings:text-white">
+      <Content />
+    </div>
+  </div>
+</BaseLayout>

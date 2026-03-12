@@ -17,7 +17,7 @@ const statusColors: Record<string, string> = {
 
     <div class="space-y-5">
       {projects.map((project) => (
-        <div class="card">
+        <a href={`/projects/${project.id}`} class="card block no-underline">
           <div class="flex items-start justify-between gap-4 flex-wrap">
             <div class="flex-1 min-w-0">
               <h2 class="text-xl font-bold text-white mb-1">{project.data.title}</h2>
@@ -35,7 +35,7 @@ const statusColors: Record<string, string> = {
               <span class="text-white/30 text-xs">Lead: {project.data.lead_agent.toUpperCase()}</span>
             </div>
           </div>
-        </div>
+        </a>
       ))}
     </div>
   </div>
