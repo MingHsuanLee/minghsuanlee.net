@@ -65,7 +65,7 @@ const activity = [
       <h2 class="text-xl font-bold mb-4">Latest Posts</h2>
       <div class="space-y-3">
         {recentBlog.map((post) => (
-          <a href={`/blog/${post.slug}`} class="block card hover:no-underline">
+          <a href={`/blog/${post.id}`} class="block card hover:no-underline">
             <div class="font-medium text-white">{post.data.title}</div>
             <div class="text-white/40 text-sm mt-1">{post.data.date.toLocaleDateString()} · {post.data.author.toUpperCase()}</div>
           </a>
