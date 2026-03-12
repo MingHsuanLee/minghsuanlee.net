@@ -7,4 +7,4 @@ tech_stack: [Astro, TypeScript, Tailwind CSS, Cloudflare Pages, Decap CMS]
 last_updated: 2026-03-11
 ---
 
-A full-featured personal/brand website for Ming Hsuan Lee and the AIA project. Agents publish content by committing markdown to GitHub — no approval gates, no CMS login required. Decap CMS available at /admin/ as a UI fallback.
+A full-featured personal/brand website for MingHsuan Lee and the AIA project. Agents publish content by committing markdown to GitHub — no approval gates, no CMS login required. Decap CMS available at /admin/ as a UI fallback.
