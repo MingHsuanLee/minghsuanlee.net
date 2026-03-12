@@ -1,0 +1,88 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const recentBlog = (await getCollection('blog')).sort((a, b) => b.data.date.getTime() - a.data.date.getTime()).slice(0, 3);
+const recentNews = (await getCollection('news')).sort((a, b) => b.data.date.getTime() - a.data.date.getTime()).slice(0, 3);
+
+const activity = [
+  { agent: 'SE', emoji: '💻', action: 'Pushed minghsuanlee.net MVP to GitHub', time: '2 hours ago' },
+  { agent: 'PM', emoji: '📋', action: 'Published launch blog post', time: '3 hours ago' },
+  { agent: 'TS', emoji: '🔧', action: 'Completed cron health monitor Phase 2', time: '1 day ago' },
+  { agent: 'WR', emoji: '✍️', action: 'Drafted content for all site pages', time: '1 day ago' },
+  { agent: 'BA', emoji: '🧠', action: 'Finalized site architecture requirements', time: '2 days ago' },
+  { agent: 'DA', emoji: '📊', action: 'Set up analytics baseline', time: '2 days ago' },
+];
+---
+<BaseLayout title="Home">
+  <!-- Hero -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-16 text-center">
+    <div class="inline-block text-sm font-mono text-cyan-400 bg-cyan-400/10 border border-cyan-400/20 px-4 py-1.5 rounded-full mb-6">
+      AI Agent Addiction
+    </div>
+    <h1 class="text-5xl sm:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
+      <span class="text-white">AIA —</span><br />
+      <span class="text-cyan-400">AI Agents</span>
+      <span class="text-white"> Building</span><br />
+      <span class="text-gold-400" style="color: #FFD200;">in Public.</span>
+    </h1>
+    <p class="text-xl text-white/60 max-w-2xl mx-auto mb-10">
+      Ming Hsuan Lee and a team of six AI agents — building real systems, shipping real code, and documenting everything.
+    </p>
+    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      <a href="https://openclaw.ai" target="_blank" rel="noopener noreferrer"
+         class="bg-cyan-400 text-navy font-bold px-8 py-3 rounded-lg hover:bg-cyan-300 transition-colors">
+        Explore OpenClaw →
+      </a>
+      <a href="/agents" class="border border-white/20 text-white px-8 py-3 rounded-lg hover:border-cyan-400/50 hover:bg-white/5 transition-colors">
+        Meet the Agents
+      </a>
+    </div>
+  </section>
+
+  <!-- Agent Activity Feed -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <h2 class="text-2xl font-bold mb-6">
+      <span class="text-cyan-400">●</span> Live Agent Activity
+    </h2>
+    <div class="space-y-3">
+      {activity.map(({ agent, emoji, action, time }) => (
+        <div class="flex items-center gap-4 bg-white/5 border border-white/10 rounded-lg px-5 py-3 hover:border-cyan-400/30 transition-colors">
+          <span class="text-2xl">{emoji}</span>
+          <div class="flex-1 min-w-0">
+            <span class="font-semibold text-cyan-400 text-sm">{agent}</span>
+            <span class="text-white/80 text-sm ml-2">{action}</span>
+          </div>
+          <span class="text-white/30 text-xs whitespace-nowrap">{time}</span>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Recent Blog + News -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 grid md:grid-cols-2 gap-10">
+    <div>
+      <h2 class="text-xl font-bold mb-4">Latest Posts</h2>
+      <div class="space-y-3">
+        {recentBlog.map((post) => (
+          <a href={`/blog/${post.slug}`} class="block card hover:no-underline">
+            <div class="font-medium text-white">{post.data.title}</div>
+            <div class="text-white/40 text-sm mt-1">{post.data.date.toLocaleDateString()} · {post.data.author.toUpperCase()}</div>
+          </a>
+        ))}
+      </div>
+    </div>
+    <div>
+      <h2 class="text-xl font-bold mb-4">News</h2>
+      <div class="space-y-3">
+        {recentNews.map((item) => (
+          <div class="card">
+            <div class="font-medium text-white">{item.data.title}</div>
+            <div class="text-white/60 text-sm mt-1">{item.data.summary}</div>
+            <div class="text-white/30 text-xs mt-2">{item.data.date.toLocaleDateString()}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

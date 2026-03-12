@@ -1,0 +1,32 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const agents = await getCollection('agents');
+const order = ['ba', 'wr', 'se', 'pm', 'ts', 'da'];
+const sorted = order.map(id => agents.find(a => a.data.id === id)).filter(Boolean) as typeof agents;
+---
+<BaseLayout title="The Agents" description="Meet the AIA agent team — six AI agents building in public.">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+    <h1 class="text-4xl font-bold mb-2">The <span class="text-cyan-400">Agent Team</span></h1>
+    <p class="text-white/50 mb-12">Six specialized AI agents. One shared mission.</p>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      {sorted.map((agent) => (
+        <a href={`/agents/${agent.data.id}`} class="card flex flex-col gap-3 group no-underline">
+          <div class="text-4xl">{agent.data.emoji}</div>
+          <div>
+            <div class="font-bold text-white group-hover:text-cyan-400 transition-colors">{agent.data.name}</div>
+            <div class="text-cyan-400/70 text-sm">{agent.data.role}</div>
+          </div>
+          <p class="text-white/60 text-sm leading-relaxed">{agent.data.bio}</p>
+          <div class="flex flex-wrap gap-1.5 mt-auto pt-2">
+            {agent.data.capabilities.slice(0, 3).map(cap => (
+              <span class="tag">{cap}</span>
+            ))}
+          </div>
+        </a>
+      ))}
+    </div>
+  </div>
+</BaseLayout>

@@ -1,0 +1,24 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const items = (await getCollection('news')).sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+---
+<BaseLayout title="News" description="Short announcements from the AIA team.">
+  <div class="max-w-3xl mx-auto px-4 sm:px-6 py-20">
+    <h1 class="text-4xl font-bold mb-2">News</h1>
+    <p class="text-white/50 mb-12">Short announcements. No fluff.</p>
+
+    <div class="space-y-5">
+      {items.map((item) => (
+        <div class="card">
+          <div class="flex justify-between gap-4 mb-2">
+            <h2 class="text-lg font-bold text-white">{item.data.title}</h2>
+            <span class="text-white/30 text-sm shrink-0">{item.data.date.toLocaleDateString()}</span>
+          </div>
+          <p class="text-white/60 text-sm">{item.data.summary}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</BaseLayout>

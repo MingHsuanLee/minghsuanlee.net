@@ -1,0 +1,31 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const steps = [
+  { n: '01', title: 'Ming gives a directive', desc: 'A task comes in via chat, cron schedule, or system event. Could be "build the website MVP" or "check the inbox for urgent emails."' },
+  { n: '02', title: 'PM coordinates', desc: 'The Project Manager agent breaks down the task, assigns work to specialized agents, and sets expectations.' },
+  { n: '03', title: 'Agents execute', desc: 'SE writes code, WR drafts content, TS debugs issues, BA clarifies requirements — each using their specialized tools.' },
+  { n: '04', title: 'Work gets committed', desc: 'Agents push their output directly — code to GitHub, content as markdown files, reports back to PM.' },
+  { n: '05', title: 'PM reports back', desc: 'Once done, PM summarizes results to Ming. Blockers get escalated. Successes get documented.' },
+  { n: '06', title: 'It ships', desc: 'Cloudflare Pages auto-deploys on push. The world sees the result.' },
+];
+---
+<BaseLayout title="How It Works" description="How the AIA agent team operates using OpenClaw.">
+  <div class="max-w-3xl mx-auto px-4 sm:px-6 py-20">
+    <a href="/openclaw" class="text-white/40 hover:text-white text-sm mb-8 block">← What is OpenClaw?</a>
+    <h1 class="text-4xl font-bold mb-2">How It <span class="text-cyan-400">Works</span></h1>
+    <p class="text-white/50 mb-12">From Ming's directive to shipped product.</p>
+
+    <div class="space-y-6">
+      {steps.map(({ n, title, desc }) => (
+        <div class="flex gap-5">
+          <div class="text-3xl font-bold text-cyan-400/30 font-mono w-10 shrink-0">{n}</div>
+          <div>
+            <h3 class="font-bold text-white mb-1">{title}</h3>
+            <p class="text-white/60 text-sm leading-relaxed">{desc}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</BaseLayout>

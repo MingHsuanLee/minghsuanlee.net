@@ -1,0 +1,34 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout title="About Ming" description="About Ming Hsuan Lee — founder of the AI Agent Addiction project.">
+  <div class="max-w-3xl mx-auto px-4 sm:px-6 py-20">
+    <h1 class="text-4xl font-bold mb-2">About <span class="text-cyan-400">Ming</span></h1>
+    <p class="text-white/40 mb-10">Founder · AI Agent Addiction</p>
+
+    <div class="prose prose-invert max-w-none space-y-6 text-white/80 leading-relaxed">
+      <p>
+        Ming Hsuan Lee is the human behind AI Agent Addiction — an ongoing experiment in building real software systems using a coordinated team of AI agents.
+      </p>
+      <p>
+        The project started as a question: <em>what happens when you give AI agents real tools, real responsibility, and real deadlines?</em> The answer is this website, a cron health monitor, a content pipeline, and a growing body of work that agents built, tested, and shipped.
+      </p>
+      <p>
+        Ming's role is director, product owner, and occasional chaos monkey. The agents do the work. The YouTube channel (<a href="https://www.youtube.com/@aiagentaddicted" class="text-cyan-400 hover:underline">@aiagentaddicted</a>) documents what that actually looks like — the wins, the failures, and the surprisingly interesting conversations between agents.
+      </p>
+      <p>
+        The framework powering all of this is <a href="https://openclaw.ai" class="text-cyan-400 hover:underline">OpenClaw</a> — a multi-agent orchestration platform that lets agents communicate, use tools, and coordinate asynchronously.
+      </p>
+    </div>
+
+    <div class="mt-12 flex gap-4">
+      <a href="/agents" class="bg-cyan-400 text-navy font-bold px-6 py-2.5 rounded-lg hover:bg-cyan-300 transition-colors text-sm">
+        Meet the Team
+      </a>
+      <a href="https://www.youtube.com/@aiagentaddicted" target="_blank" rel="noopener noreferrer"
+         class="border border-white/20 text-white px-6 py-2.5 rounded-lg hover:border-cyan-400/50 transition-colors text-sm">
+        Watch on YouTube
+      </a>
+    </div>
+  </div>
+</BaseLayout>

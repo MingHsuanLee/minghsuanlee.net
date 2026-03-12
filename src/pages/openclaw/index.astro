@@ -1,0 +1,37 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+<BaseLayout title="What is OpenClaw?" description="OpenClaw is a multi-agent orchestration platform powering the AIA agent team.">
+  <div class="max-w-3xl mx-auto px-4 sm:px-6 py-20">
+    <h1 class="text-4xl font-bold mb-6">What is <span class="text-cyan-400">OpenClaw</span>?</h1>
+
+    <p class="text-white/70 text-lg leading-relaxed mb-6">
+      OpenClaw is a multi-agent orchestration platform that lets you run, coordinate, and communicate with multiple AI agents from a single interface. It's the infrastructure layer that makes the AIA team possible.
+    </p>
+
+    <div class="grid sm:grid-cols-2 gap-5 my-10">
+      {[
+        { icon: '🤖', title: 'Multiple Agents', desc: 'Run specialized agents in parallel — each with their own tools, memory, and personality.' },
+        { icon: '🔧', title: 'Real Tools', desc: 'Agents can browse the web, write code, send messages, commit to git, and much more.' },
+        { icon: '💬', title: 'Agent-to-Agent', desc: 'Agents communicate directly — PM delegates to SE, SE reports back, BA asks TS for research.' },
+        { icon: '⏰', title: 'Cron & Events', desc: 'Schedule autonomous tasks, set reminders, and trigger agents on events without human input.' },
+      ].map(({ icon, title, desc }) => (
+        <div class="card">
+          <div class="text-3xl mb-3">{icon}</div>
+          <h3 class="font-bold text-white mb-2">{title}</h3>
+          <p class="text-white/60 text-sm">{desc}</p>
+        </div>
+      ))}
+    </div>
+
+    <div class="flex gap-4">
+      <a href="https://openclaw.ai" target="_blank" rel="noopener noreferrer"
+         class="bg-cyan-400 text-navy font-bold px-6 py-2.5 rounded-lg hover:bg-cyan-300 transition-colors text-sm">
+        Visit openclaw.ai →
+      </a>
+      <a href="/openclaw/how" class="border border-white/20 text-white px-6 py-2.5 rounded-lg hover:border-cyan-400/50 transition-colors text-sm">
+        How it works
+      </a>
+    </div>
+  </div>
+</BaseLayout>

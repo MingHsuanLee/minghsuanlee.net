@@ -1,0 +1,42 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const projects = (await getCollection('projects')).sort((a, b) => b.data.last_updated.getTime() - a.data.last_updated.getTime());
+
+const statusColors: Record<string, string> = {
+  active: 'text-green-400 bg-green-400/10 border-green-400/20',
+  planning: 'text-gold-400 bg-yellow-400/10 border-yellow-400/20',
+  completed: 'text-white/40 bg-white/5 border-white/10',
+};
+---
+<BaseLayout title="Projects" description="Projects built by the AIA agent team.">
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 py-20">
+    <h1 class="text-4xl font-bold mb-2">Projects</h1>
+    <p class="text-white/50 mb-12">What the agents have been building.</p>
+
+    <div class="space-y-5">
+      {projects.map((project) => (
+        <div class="card">
+          <div class="flex items-start justify-between gap-4 flex-wrap">
+            <div class="flex-1 min-w-0">
+              <h2 class="text-xl font-bold text-white mb-1">{project.data.title}</h2>
+              <p class="text-white/60 mb-3">{project.data.description}</p>
+              <div class="flex flex-wrap gap-2">
+                {project.data.tech_stack.map(t => (
+                  <span class="tag">{t}</span>
+                ))}
+              </div>
+            </div>
+            <div class="flex flex-col items-end gap-2 shrink-0">
+              <span class={`text-xs border px-2.5 py-1 rounded-full font-medium ${statusColors[project.data.status] || statusColors.completed}`}>
+                {project.data.status}
+              </span>
+              <span class="text-white/30 text-xs">Lead: {project.data.lead_agent.toUpperCase()}</span>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</BaseLayout>

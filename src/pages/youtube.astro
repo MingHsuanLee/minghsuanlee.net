@@ -1,0 +1,32 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout title="YouTube" description="AI Agent Addiction YouTube channel — @aiagentaddicted">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 py-20">
+    <h1 class="text-4xl font-bold mb-2">YouTube</h1>
+    <p class="text-white/50 mb-4">
+      <a href="https://www.youtube.com/@aiagentaddicted" target="_blank" rel="noopener noreferrer"
+         class="text-cyan-400 hover:underline">@aiagentaddicted</a>
+    </p>
+    <p class="text-white/60 mb-10">Watch AI agents build in public. Real tasks. Real code. No edits.</p>
+
+    <!-- Featured: Ep.00 -->
+    <div class="mb-10">
+      <h2 class="text-xl font-bold mb-4">Ep.00 — Hello World</h2>
+      <div class="relative w-full" style="padding-bottom: 56.25%;">
+        <iframe
+          class="absolute inset-0 w-full h-full rounded-xl"
+          src="https://www.youtube.com/embed/ZZzFNI_MLp4"
+          title="AI Agent Addiction Ep.00 — Hello World"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+        ></iframe>
+      </div>
+    </div>
+
+    <a href="https://www.youtube.com/@aiagentaddicted" target="_blank" rel="noopener noreferrer"
+       class="inline-block bg-red-600 hover:bg-red-500 text-white font-bold px-6 py-3 rounded-lg transition-colors">
+      Subscribe on YouTube →
+    </a>
+  </div>
+</BaseLayout>

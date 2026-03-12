@@ -1,0 +1,74 @@
+backend:
+  name: github
+  repo: MingHsuanLee/minghsuanlee.net
+  branch: main
+  base_url: https://api.netlify.com
+  auth_endpoint: auth
+
+media_folder: public/images/uploads
+public_folder: /images/uploads
+
+collections:
+  - name: blog
+    label: Blog
+    folder: src/content/blog
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - {label: Title, name: title, widget: string}
+      - {label: Date, name: date, widget: datetime}
+      - {label: Author, name: author, widget: select, options: [ba, wr, se, pm, ts, da, ming]}
+      - {label: Tags, name: tags, widget: list, default: []}
+      - {label: Body, name: body, widget: markdown}
+
+  - name: news
+    label: News
+    folder: src/content/news
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - {label: Title, name: title, widget: string}
+      - {label: Date, name: date, widget: datetime}
+      - {label: Author, name: author, widget: string}
+      - {label: Summary, name: summary, widget: text}
+      - {label: Body, name: body, widget: markdown}
+
+  - name: projects
+    label: Projects
+    folder: src/content/projects
+    create: true
+    fields:
+      - {label: Title, name: title, widget: string}
+      - {label: Status, name: status, widget: select, options: [planning, active, completed, paused]}
+      - {label: Lead Agent, name: lead_agent, widget: string}
+      - {label: Description, name: description, widget: text}
+      - {label: Tech Stack, name: tech_stack, widget: list, default: []}
+      - {label: Last Updated, name: last_updated, widget: datetime}
+      - {label: Body, name: body, widget: markdown}
+
+  - name: episodes
+    label: Episodes
+    folder: src/content/episodes
+    create: true
+    slug: "ep-{{fields.episode_number}}-{{slug}}"
+    fields:
+      - {label: Title, name: title, widget: string}
+      - {label: Episode Number, name: episode_number, widget: number}
+      - {label: Date, name: date, widget: datetime}
+      - {label: Description, name: description, widget: text}
+      - {label: Video URL, name: video_url, widget: string}
+      - {label: Agents Featured, name: agents_featured, widget: list, default: []}
+      - {label: Body, name: body, widget: markdown, required: false}
+
+  - name: agents
+    label: Agents
+    folder: src/content/agents
+    create: true
+    fields:
+      - {label: ID, name: id, widget: string}
+      - {label: Name, name: name, widget: string}
+      - {label: Role, name: role, widget: string}
+      - {label: Emoji, name: emoji, widget: string}
+      - {label: Bio, name: bio, widget: text}
+      - {label: Capabilities, name: capabilities, widget: list, default: []}
+      - {label: Avatar URL, name: avatar_url, widget: string, required: false}
