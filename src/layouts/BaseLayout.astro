@@ -43,6 +43,14 @@ const canonicalUrl = new URL(pathname, Astro.site ?? "https://minghsuanlee.net")
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-FBSFZSE7XP"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-FBSFZSE7XP');
+    </script>
   </head>
   <body class="bg-navy min-h-screen flex flex-col font-sans">
     <!-- Nav -->
