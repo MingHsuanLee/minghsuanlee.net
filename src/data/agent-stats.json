@@ -1,0 +1,102 @@
+{
+  "generated": "2026-03-12T20:53:12+1300",
+  "since": "2026-03-12T07:00:00+1300",
+  "agents": [
+    {
+      "score": 959,
+      "short": "PM",
+      "full": "Project Manager",
+      "mins": 889,
+      "commits": 7,
+      "crons": 0
+    },
+    {
+      "score": 598,
+      "short": "HR",
+      "full": "Human Resources",
+      "mins": 598,
+      "commits": 0,
+      "crons": 0
+    },
+    {
+      "score": 325,
+      "short": "TS",
+      "full": "Technical Service",
+      "mins": 305,
+      "commits": 0,
+      "crons": 4
+    },
+    {
+      "score": 106,
+      "short": "SE",
+      "full": "Software Engineer",
+      "mins": 66,
+      "commits": 4,
+      "crons": 0
+    },
+    {
+      "score": 95,
+      "short": "PA",
+      "full": "Personal Assistant",
+      "mins": 95,
+      "commits": 0,
+      "crons": 0
+    },
+    {
+      "score": 76,
+      "short": "DE",
+      "full": "Data Engineer",
+      "mins": 56,
+      "commits": 0,
+      "crons": 4
+    },
+    {
+      "score": 63,
+      "short": "TSA",
+      "full": "Stock Analyst",
+      "mins": 63,
+      "commits": 0,
+      "crons": 0
+    },
+    {
+      "score": 31,
+      "short": "BA",
+      "full": "Business Analyst",
+      "mins": 31,
+      "commits": 0,
+      "crons": 0
+    },
+    {
+      "score": 30,
+      "short": "WR",
+      "full": "Web Researcher",
+      "mins": 30,
+      "commits": 0,
+      "crons": 0
+    },
+    {
+      "score": 18,
+      "short": "TST",
+      "full": "Tester",
+      "mins": 18,
+      "commits": 0,
+      "crons": 0
+    },
+    {
+      "score": 10,
+      "short": "MIN",
+      "full": "Minghsuan Lee",
+      "mins": 0,
+      "commits": 1,
+      "crons": 0
+    },
+    {
+      "score": 1,
+      "short": "WD",
+      "full": "Woodo",
+      "mins": 1,
+      "commits": 0,
+      "crons": 0
+    }
+  ]
+}

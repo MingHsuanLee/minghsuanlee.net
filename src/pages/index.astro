@@ -1,18 +1,14 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
+import statsRaw from '../data/agent-stats.json';
 
 const recentBlog = (await getCollection('blog')).sort((a, b) => b.data.date.getTime() - a.data.date.getTime()).slice(0, 3);
 const recentNews = (await getCollection('news')).sort((a, b) => b.data.date.getTime() - a.data.date.getTime()).slice(0, 3);
 
-const activity = [
-  { agent: 'SE', emoji: '💻', action: 'Pushed minghsuanlee.net MVP to GitHub', time: '2 hours ago' },
-  { agent: 'PM', emoji: '📋', action: 'Published launch blog post', time: '3 hours ago' },
-  { agent: 'TS', emoji: '🔧', action: 'Completed cron health monitor Phase 2', time: '1 day ago' },
-  { agent: 'WR', emoji: '✍️', action: 'Drafted content for all site pages', time: '1 day ago' },
-  { agent: 'BA', emoji: '🧠', action: 'Finalized site architecture requirements', time: '2 days ago' },
-  { agent: 'DA', emoji: '📊', action: 'Set up analytics baseline', time: '2 days ago' },
-];
+const agentStats = statsRaw.agents;
+const sinceDate = new Date(statsRaw.since);
+const sinceLabel = sinceDate.toLocaleDateString('en-NZ', { weekday: 'short', month: 'short', day: 'numeric' });
 ---
 <BaseLayout title="Home">
   <!-- Hero -->
@@ -40,20 +36,36 @@ const activity = [
     </div>
   </section>
 
-  <!-- Agent Activity Feed -->
+  <!-- Agent Stats -->
   <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-    <h2 class="text-2xl font-bold mb-6">
-      <span class="text-cyan-400">●</span> Live Agent Activity
-    </h2>
-    <div class="space-y-3">
-      {activity.map(({ agent, emoji, action, time }) => (
-        <div class="flex items-center gap-4 bg-white/5 border border-white/10 rounded-lg px-5 py-3 hover:border-cyan-400/30 transition-colors">
-          <span class="text-2xl">{emoji}</span>
-          <div class="flex-1 min-w-0">
-            <span class="font-semibold text-cyan-400 text-sm">{agent}</span>
-            <span class="text-white/80 text-sm ml-2">{action}</span>
+    <div class="flex items-baseline gap-3 mb-6">
+      <h2 class="text-2xl font-bold">
+        <span class="text-cyan-400">●</span> Agent Stats Today
+      </h2>
+      <span class="text-white/30 text-sm">since 7:00 AM · {sinceLabel}</span>
+    </div>
+    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
+      {agentStats.map(({ short, full, mins, commits, crons }) => (
+        <div class="bg-white/5 border border-white/10 rounded-xl p-4 hover:border-cyan-400/30 transition-colors">
+          <div class="mb-3">
+            <div class="text-cyan-400 font-bold text-sm">{short}</div>
+            <div class="text-white/30 text-xs">{full}</div>
           </div>
-          <span class="text-white/30 text-xs whitespace-nowrap">{time}</span>
+          <div class="h-px bg-white/5 mb-3"></div>
+          <div class="grid grid-cols-3 gap-1">
+            <div>
+              <div class={`text-lg font-bold leading-none ${mins > 0 ? 'text-yellow-400' : 'text-white'}`}>{mins}</div>
+              <div class="text-white/25 text-xs mt-1">MINS</div>
+            </div>
+            <div>
+              <div class={`text-lg font-bold leading-none ${commits > 0 ? 'text-yellow-400' : 'text-white'}`}>{commits}</div>
+              <div class="text-white/25 text-xs mt-1">COMMITS</div>
+            </div>
+            <div>
+              <div class={`text-lg font-bold leading-none ${crons > 0 ? 'text-yellow-400' : 'text-white'}`}>{crons}</div>
+              <div class="text-white/25 text-xs mt-1">CRONS</div>
+            </div>
+          </div>
         </div>
       ))}
     </div>
