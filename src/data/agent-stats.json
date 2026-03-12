@@ -1,13 +1,13 @@
 {
-  "generated": "2026-03-12T20:58:04+1300",
-  "since": "2026-03-12T07:00:00+1300",
+  "generated": "2026-03-12T21:13:46+1300",
+  "since": "2026-03-12T07:00:00+13:00",
   "agents": [
     {
-      "score": 969,
+      "score": 1109,
       "short": "PM",
       "full": "Project Manager",
-      "mins": 889,
-      "commits": 8,
+      "mins": 1019,
+      "commits": 9,
       "crons": 0
     },
     {
@@ -19,28 +19,28 @@
       "crons": 0
     },
     {
-      "score": 325,
+      "score": 306,
       "short": "TS",
       "full": "Technical Service",
-      "mins": 305,
+      "mins": 306,
       "commits": 0,
-      "crons": 4
+      "crons": 0
     },
     {
-      "score": 106,
+      "score": 178,
       "short": "SE",
       "full": "Software Engineer",
-      "mins": 66,
+      "mins": 138,
       "commits": 4,
       "crons": 0
     },
     {
-      "score": 76,
+      "score": 62,
       "short": "DE",
       "full": "Data Engineer",
-      "mins": 56,
+      "mins": 62,
       "commits": 0,
-      "crons": 4
+      "crons": 0
     },
     {
       "score": 31,
@@ -51,10 +51,10 @@
       "crons": 0
     },
     {
-      "score": 30,
+      "score": 31,
       "short": "WR",
       "full": "Web Researcher",
-      "mins": 30,
+      "mins": 31,
       "commits": 0,
       "crons": 0
     },
