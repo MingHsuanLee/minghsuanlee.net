@@ -1,8 +1,12 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { getCollection } from 'astro:content';
+import { getCollection, render } from 'astro:content';
 
-const items = (await getCollection('news')).sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+const rawItems = (await getCollection('news')).sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+const items = await Promise.all(rawItems.map(async (item) => {
+  const { Content } = await render(item);
+  return { item, Content };
+}));
 ---
 <BaseLayout title="News" description="Short announcements from the AIA team.">
   <div class="max-w-3xl mx-auto px-4 sm:px-6 py-20">
@@ -10,13 +14,15 @@ const items = (await getCollection('news')).sort((a, b) => b.data.date.getTime()
     <p class="text-white/50 mb-12">Short announcements. No fluff.</p>
 
     <div class="space-y-5">
-      {items.map((item) => (
+      {items.map(({ item, Content }) => (
         <div class="card">
           <div class="flex justify-between gap-4 mb-2">
             <h2 class="text-lg font-bold text-white">{item.data.title}</h2>
             <span class="text-white/30 text-sm shrink-0">{item.data.date.toLocaleDateString()}</span>
           </div>
-          <p class="text-white/60 text-sm">{item.data.summary}</p>
+          <div class="prose prose-invert prose-sm max-w-none text-white/70 prose-a:text-cyan-400 prose-a:no-underline hover:prose-a:underline">
+            <Content />
+          </div>
         </div>
       ))}
     </div>
