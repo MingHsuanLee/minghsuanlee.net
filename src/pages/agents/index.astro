@@ -3,13 +3,13 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
 
 const agents = await getCollection('agents');
-const order = ['ba', 'wr', 'se', 'pm', 'ts', 'da'];
+const order = ['ba', 'wr', 'se', 'de', 'pm', 'ts', 'da', 'hr', 'tester'];
 const sorted = order.map(id => agents.find(a => a.data.id === id)).filter(Boolean) as typeof agents;
 ---
-<BaseLayout title="The Agents" description="Meet the AIA agent team — six AI agents building in public.">
+<BaseLayout title="The Agents" description="Meet the AIA agent team — nine AI agents building in public.">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
     <h1 class="text-4xl font-bold mb-2">The <span class="text-cyan-400">Agent Team</span></h1>
-    <p class="text-white/50 mb-12">Six specialized AI agents. One shared mission.</p>
+    <p class="text-white/50 mb-12">Nine specialized AI agents. One shared mission.</p>
 
     <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
       {sorted.map((agent) => (
