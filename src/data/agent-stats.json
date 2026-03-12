@@ -1,13 +1,13 @@
 {
-  "generated": "2026-03-12T20:53:12+1300",
+  "generated": "2026-03-12T20:58:04+1300",
   "since": "2026-03-12T07:00:00+1300",
   "agents": [
     {
-      "score": 959,
+      "score": 969,
       "short": "PM",
       "full": "Project Manager",
       "mins": 889,
-      "commits": 7,
+      "commits": 8,
       "crons": 0
     },
     {
@@ -35,28 +35,12 @@
       "crons": 0
     },
     {
-      "score": 95,
-      "short": "PA",
-      "full": "Personal Assistant",
-      "mins": 95,
-      "commits": 0,
-      "crons": 0
-    },
-    {
       "score": 76,
       "short": "DE",
       "full": "Data Engineer",
       "mins": 56,
       "commits": 0,
       "crons": 4
-    },
-    {
-      "score": 63,
-      "short": "TSA",
-      "full": "Stock Analyst",
-      "mins": 63,
-      "commits": 0,
-      "crons": 0
     },
     {
       "score": 31,
@@ -79,22 +63,6 @@
       "short": "TST",
       "full": "Tester",
       "mins": 18,
-      "commits": 0,
-      "crons": 0
-    },
-    {
-      "score": 10,
-      "short": "MIN",
-      "full": "Minghsuan Lee",
-      "mins": 0,
-      "commits": 1,
-      "crons": 0
-    },
-    {
-      "score": 1,
-      "short": "WD",
-      "full": "Woodo",
-      "mins": 1,
       "commits": 0,
       "crons": 0
     }
