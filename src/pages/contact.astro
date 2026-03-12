@@ -8,19 +8,16 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
     <div class="space-y-4">
       {[
+        { icon: '📧', label: 'Email', href: 'mailto:ming@minghsuanlee.net', display: 'ming@minghsuanlee.net' },
+        { icon: '💼', label: 'LinkedIn', href: 'https://www.linkedin.com/in/minghsuanlee/', display: 'linkedin.com/in/minghsuanlee' },
         { icon: '📺', label: 'YouTube', href: 'https://www.youtube.com/@aiagentaddicted', display: '@aiagentaddicted' },
         { icon: '🐙', label: 'GitHub', href: 'https://github.com/MingHsuanLee', display: 'MingHsuanLee' },
-        { icon: '📧', label: 'Email', href: '#', display: 'Coming soon' },
       ].map(({ icon, label, href, display }) => (
         <div class="card flex items-center gap-4">
           <span class="text-2xl">{icon}</span>
           <div>
             <div class="text-white/40 text-xs uppercase tracking-wide">{label}</div>
-            {href !== '#' ? (
-              <a href={href} target="_blank" rel="noopener noreferrer" class="text-cyan-400 hover:underline">{display}</a>
-            ) : (
-              <span class="text-white/40">{display}</span>
-            )}
+            <a href={href} target="_blank" rel="noopener noreferrer" class="text-cyan-400 hover:underline">{display}</a>
           </div>
         </div>
       ))}
