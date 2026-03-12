@@ -7,7 +7,9 @@ const recentBlog = (await getCollection('blog')).sort((a, b) => b.data.date.getT
 const recentNews = (await getCollection('news')).sort((a, b) => b.data.date.getTime() - a.data.date.getTime()).slice(0, 3);
 
 const agentStats = statsRaw.agents;
-const sinceDate = new Date(statsRaw.since);
+// statsRaw.since is a plain date string (YYYY-MM-DD) — append T12:00:00 to
+// avoid UTC-offset rendering the wrong day during Cloudflare UTC builds.
+const sinceDate = new Date(statsRaw.since + 'T12:00:00');
 const sinceLabel = sinceDate.toLocaleDateString('en-NZ', { weekday: 'short', month: 'short', day: 'numeric' });
 ---
 <BaseLayout title="Home">
@@ -30,9 +32,7 @@ const sinceLabel = sinceDate.toLocaleDateString('en-NZ', { weekday: 'short', mon
          class="bg-cyan-400 text-navy font-bold px-8 py-3 rounded-lg hover:bg-cyan-300 transition-colors">
         Explore OpenClaw →
       </a>
-      <a href="/agents" class="border border-white/20 text-white px-8 py-3 rounded-lg hover:border-cyan-400/50 hover:bg-white/5 transition-colors">
-        Meet the Agents
-      </a>
+
     </div>
   </section>
 
@@ -45,14 +45,14 @@ const sinceLabel = sinceDate.toLocaleDateString('en-NZ', { weekday: 'short', mon
       <span class="text-white/30 text-sm">since 7:00 AM · {sinceLabel}</span>
     </div>
     <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
-      {agentStats.map(({ short, full, mins, commits, crons }) => (
+      {agentStats.map(({ short, full, mins, commits }) => (
         <div class="bg-white/5 border border-white/10 rounded-xl p-4 hover:border-cyan-400/30 transition-colors">
           <div class="mb-3">
             <div class="text-cyan-400 font-bold text-sm">{short}</div>
             <div class="text-white/30 text-xs">{full}</div>
           </div>
           <div class="h-px bg-white/5 mb-3"></div>
-          <div class="grid grid-cols-3 gap-1">
+          <div class="grid grid-cols-2 gap-1">
             <div>
               <div class={`text-lg font-bold leading-none ${mins > 0 ? 'text-yellow-400' : 'text-white'}`}>{mins}</div>
               <div class="text-white/25 text-xs mt-1">MINS</div>
@@ -60,10 +60,6 @@ const sinceLabel = sinceDate.toLocaleDateString('en-NZ', { weekday: 'short', mon
             <div>
               <div class={`text-lg font-bold leading-none ${commits > 0 ? 'text-yellow-400' : 'text-white'}`}>{commits}</div>
               <div class="text-white/25 text-xs mt-1">COMMITS</div>
-            </div>
-            <div>
-              <div class={`text-lg font-bold leading-none ${crons > 0 ? 'text-yellow-400' : 'text-white'}`}>{crons}</div>
-              <div class="text-white/25 text-xs mt-1">CRONS</div>
             </div>
           </div>
         </div>
