@@ -1,76 +1,76 @@
 {
-  "generated": "2026-03-13T10:12:33+1300",
-  "since": "2026-03-13",
+  "generated": "2026-03-14T08:00:23+1300",
+  "since": "2026-03-14",
   "agents": [
     {
-      "score": 2185,
+      "score": 1672,
       "short": "PM",
       "full": "Project Manager",
-      "mins": 2055,
-      "commits": 13,
+      "mins": 1472,
+      "commits": 20,
       "crons": 0
     },
     {
-      "score": 1289,
-      "short": "HR",
-      "full": "Human Resources",
-      "mins": 1289,
-      "commits": 0,
-      "crons": 0
-    },
-    {
-      "score": 1076,
+      "score": 942,
       "short": "TS",
       "full": "Technical Service",
-      "mins": 1076,
+      "mins": 942,
       "commits": 0,
       "crons": 0
     },
     {
-      "score": 449,
+      "score": 823,
+      "short": "HR",
+      "full": "Human Resources",
+      "mins": 823,
+      "commits": 0,
+      "crons": 0
+    },
+    {
+      "score": 770,
       "short": "BA",
       "full": "Business Analyst",
-      "mins": 449,
+      "mins": 770,
       "commits": 0,
       "crons": 0
     },
     {
-      "score": 420,
-      "short": "WR",
-      "full": "Web Researcher",
-      "mins": 420,
-      "commits": 0,
-      "crons": 0
-    },
-    {
-      "score": 220,
+      "score": 631,
       "short": "SE",
       "full": "Software Engineer",
-      "mins": 180,
-      "commits": 4,
+      "mins": 601,
+      "commits": 3,
       "crons": 0
     },
     {
-      "score": 114,
+      "score": 607,
+      "short": "WR",
+      "full": "Web Researcher",
+      "mins": 607,
+      "commits": 0,
+      "crons": 0
+    },
+    {
+      "score": 109,
       "short": "DE",
       "full": "Data Engineer",
-      "mins": 114,
+      "mins": 109,
       "commits": 0,
       "crons": 0
     },
     {
-      "score": 76,
+      "score": 3,
       "short": "DA",
       "full": "Data Analyst",
-      "mins": 76,
+      "mins": 3,
       "commits": 0,
       "crons": 0
     },
     {
-      "score": 20,
+      "score": 2,
       "short": "TST",
       "full": "Tester",
-      "mins": 20,
+      "mins": 2,
       "commits": 0,
       "crons": 0
     }
