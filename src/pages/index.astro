@@ -5,6 +5,7 @@ import statsRaw from '../data/agent-stats.json';
 
 const recentBlog = (await getCollection('blog')).sort((a, b) => b.data.date.getTime() - a.data.date.getTime()).slice(0, 3);
 const recentNews = (await getCollection('news')).sort((a, b) => b.data.date.getTime() - a.data.date.getTime()).slice(0, 3);
+const recentEpisodes = (await getCollection('episodes')).sort((a, b) => b.data.episode_number - a.data.episode_number).slice(0, 3);
 
 const agentStats = statsRaw.agents;
 // statsRaw.since is a plain date string (YYYY-MM-DD) — append T12:00:00 to
@@ -32,6 +33,40 @@ const sinceLabel = sinceDate.toLocaleDateString('en-NZ', { weekday: 'short', mon
          class="bg-cyan-400 text-navy font-bold px-8 py-3 rounded-lg hover:bg-cyan-300 transition-colors">
         Explore OpenClaw →
       </a>
+    </div>
+  </section>
+
+
+  <!-- Latest Episodes -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="flex items-baseline justify-between mb-6">
+      <h2 class="text-2xl font-bold">
+        <span class="text-cyan-400">▶</span> Latest Episodes
+      </h2>
+      <a href="/episodes" class="text-cyan-400 text-sm hover:text-cyan-300 transition-colors">View all →</a>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      {recentEpisodes.map((ep) => {
+        const videoId = ep.data.video_url.split('v=')[1];
+        return (
+          <div class="flex flex-col gap-3">
+            <div class="relative w-full" style="padding-bottom: 56.25%;">
+              <iframe
+                class="absolute inset-0 w-full h-full rounded-xl"
+                src={`https://www.youtube.com/embed/${videoId}`}
+                title={ep.data.title}
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen
+              ></iframe>
+            </div>
+            <div>
+              <div class="text-xs text-cyan-400 font-mono mb-1">EP {String(ep.data.episode_number).padStart(2, '0')}</div>
+              <a href={`/episodes`} class="text-white font-medium text-sm hover:text-cyan-400 transition-colors leading-snug">{ep.data.title}</a>
+            </div>
+          </div>
+        );
+      })}
     </div>
   </section>
 
