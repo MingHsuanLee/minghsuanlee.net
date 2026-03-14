@@ -1,75 +1,75 @@
 {
-  "generated": "2026-03-14T08:00:23+1300",
-  "since": "2026-03-14",
+  "generated": "2026-03-15T08:04:20+1300",
+  "since": "2026-03-15",
   "agents": [
     {
-      "score": 1672,
+      "score": 1813,
       "short": "PM",
       "full": "Project Manager",
-      "mins": 1472,
-      "commits": 20,
+      "mins": 1753,
+      "commits": 6,
       "crons": 0
     },
     {
-      "score": 942,
-      "short": "TS",
-      "full": "Technical Service",
-      "mins": 942,
-      "commits": 0,
-      "crons": 0
-    },
-    {
-      "score": 823,
+      "score": 984,
       "short": "HR",
       "full": "Human Resources",
-      "mins": 823,
+      "mins": 984,
       "commits": 0,
       "crons": 0
     },
     {
-      "score": 770,
-      "short": "BA",
-      "full": "Business Analyst",
-      "mins": 770,
-      "commits": 0,
-      "crons": 0
-    },
-    {
-      "score": 631,
+      "score": 831,
       "short": "SE",
       "full": "Software Engineer",
-      "mins": 601,
-      "commits": 3,
+      "mins": 831,
+      "commits": 0,
       "crons": 0
     },
     {
-      "score": 607,
+      "score": 586,
       "short": "WR",
       "full": "Web Researcher",
-      "mins": 607,
+      "mins": 586,
       "commits": 0,
       "crons": 0
     },
     {
-      "score": 109,
+      "score": 571,
+      "short": "TS",
+      "full": "Technical Service",
+      "mins": 571,
+      "commits": 0,
+      "crons": 0
+    },
+    {
+      "score": 258,
       "short": "DE",
       "full": "Data Engineer",
-      "mins": 109,
+      "mins": 258,
       "commits": 0,
       "crons": 0
     },
     {
-      "score": 3,
-      "short": "DA",
-      "full": "Data Analyst",
-      "mins": 3,
+      "score": 124,
+      "short": "TST",
+      "full": "Tester",
+      "mins": 124,
+      "commits": 0,
+      "crons": 0
+    },
+    {
+      "score": 27,
+      "short": "BA",
+      "full": "Business Analyst",
+      "mins": 27,
       "commits": 0,
       "crons": 0
     },
     {
       "score": 2,
-      "short": "TST",
-      "full": "Tester",
+      "short": "DA",
+      "full": "Data Analyst",
       "mins": 2,
       "commits": 0,
       "crons": 0
