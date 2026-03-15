@@ -1,5 +1,5 @@
 {
-  "generated": "2026-03-16T07:44:27+1300",
+  "generated": "2026-03-16T08:04:23+1300",
   "since": "2026-03-16",
   "agents": [
     {
@@ -11,11 +11,11 @@
       "crons": 0
     },
     {
-      "score": 2560,
+      "score": 2570,
       "short": "PM",
       "full": "Project Manager",
       "mins": 2540,
-      "commits": 2,
+      "commits": 3,
       "crons": 0
     },
     {
