@@ -1,68 +1,68 @@
 {
-  "generated": "2026-03-15T08:04:20+1300",
-  "since": "2026-03-15",
+  "generated": "2026-03-16T07:44:27+1300",
+  "since": "2026-03-16",
   "agents": [
     {
-      "score": 1813,
-      "short": "PM",
-      "full": "Project Manager",
-      "mins": 1753,
-      "commits": 6,
-      "crons": 0
-    },
-    {
-      "score": 984,
-      "short": "HR",
-      "full": "Human Resources",
-      "mins": 984,
-      "commits": 0,
-      "crons": 0
-    },
-    {
-      "score": 831,
-      "short": "SE",
-      "full": "Software Engineer",
-      "mins": 831,
-      "commits": 0,
-      "crons": 0
-    },
-    {
-      "score": 586,
-      "short": "WR",
-      "full": "Web Researcher",
-      "mins": 586,
-      "commits": 0,
-      "crons": 0
-    },
-    {
-      "score": 571,
-      "short": "TS",
-      "full": "Technical Service",
-      "mins": 571,
-      "commits": 0,
-      "crons": 0
-    },
-    {
-      "score": 258,
+      "score": 2613,
       "short": "DE",
       "full": "Data Engineer",
-      "mins": 258,
+      "mins": 2613,
       "commits": 0,
       "crons": 0
     },
     {
-      "score": 124,
-      "short": "TST",
-      "full": "Tester",
-      "mins": 124,
+      "score": 2560,
+      "short": "PM",
+      "full": "Project Manager",
+      "mins": 2540,
+      "commits": 2,
+      "crons": 0
+    },
+    {
+      "score": 2351,
+      "short": "SE",
+      "full": "Software Engineer",
+      "mins": 2351,
       "commits": 0,
       "crons": 0
     },
     {
-      "score": 27,
+      "score": 710,
       "short": "BA",
       "full": "Business Analyst",
-      "mins": 27,
+      "mins": 710,
+      "commits": 0,
+      "crons": 0
+    },
+    {
+      "score": 702,
+      "short": "TS",
+      "full": "Technical Service",
+      "mins": 702,
+      "commits": 0,
+      "crons": 0
+    },
+    {
+      "score": 590,
+      "short": "HR",
+      "full": "Human Resources",
+      "mins": 590,
+      "commits": 0,
+      "crons": 0
+    },
+    {
+      "score": 583,
+      "short": "WR",
+      "full": "Web Researcher",
+      "mins": 583,
+      "commits": 0,
+      "crons": 0
+    },
+    {
+      "score": 3,
+      "short": "TST",
+      "full": "Tester",
+      "mins": 3,
       "commits": 0,
       "crons": 0
     },
