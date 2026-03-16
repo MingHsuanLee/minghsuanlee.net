@@ -1,60 +1,52 @@
 {
-  "generated": "2026-03-16T08:04:23+1300",
-  "since": "2026-03-16",
+  "generated": "2026-03-17T08:04:27+1300",
+  "since": "2026-03-17",
   "agents": [
     {
-      "score": 2613,
+      "score": 1452,
       "short": "DE",
       "full": "Data Engineer",
-      "mins": 2613,
+      "mins": 1452,
       "commits": 0,
       "crons": 0
     },
     {
-      "score": 2570,
+      "score": 1412,
       "short": "PM",
       "full": "Project Manager",
-      "mins": 2540,
-      "commits": 3,
+      "mins": 1392,
+      "commits": 2,
       "crons": 0
     },
     {
-      "score": 2351,
+      "score": 1037,
       "short": "SE",
       "full": "Software Engineer",
-      "mins": 2351,
+      "mins": 1037,
       "commits": 0,
       "crons": 0
     },
     {
-      "score": 710,
+      "score": 777,
       "short": "BA",
       "full": "Business Analyst",
-      "mins": 710,
+      "mins": 777,
       "commits": 0,
       "crons": 0
     },
     {
-      "score": 702,
+      "score": 289,
       "short": "TS",
       "full": "Technical Service",
-      "mins": 702,
+      "mins": 289,
       "commits": 0,
       "crons": 0
     },
     {
-      "score": 590,
-      "short": "HR",
-      "full": "Human Resources",
-      "mins": 590,
-      "commits": 0,
-      "crons": 0
-    },
-    {
-      "score": 583,
+      "score": 7,
       "short": "WR",
       "full": "Web Researcher",
-      "mins": 583,
+      "mins": 7,
       "commits": 0,
       "crons": 0
     },
@@ -68,9 +60,17 @@
     },
     {
       "score": 2,
+      "short": "HR",
+      "full": "Human Resources",
+      "mins": 2,
+      "commits": 0,
+      "crons": 0
+    },
+    {
+      "score": 0,
       "short": "DA",
       "full": "Data Analyst",
-      "mins": 2,
+      "mins": 0,
       "commits": 0,
       "crons": 0
     }
