@@ -1,52 +1,60 @@
 {
-  "generated": "2026-03-17T08:04:27+1300",
-  "since": "2026-03-17",
+  "generated": "2026-03-18T08:04:31+1300",
+  "since": "2026-03-18",
   "agents": [
     {
-      "score": 1452,
-      "short": "DE",
-      "full": "Data Engineer",
-      "mins": 1452,
-      "commits": 0,
-      "crons": 0
-    },
-    {
-      "score": 1412,
-      "short": "PM",
-      "full": "Project Manager",
-      "mins": 1392,
-      "commits": 2,
-      "crons": 0
-    },
-    {
-      "score": 1037,
-      "short": "SE",
-      "full": "Software Engineer",
-      "mins": 1037,
-      "commits": 0,
-      "crons": 0
-    },
-    {
-      "score": 777,
-      "short": "BA",
-      "full": "Business Analyst",
-      "mins": 777,
-      "commits": 0,
-      "crons": 0
-    },
-    {
-      "score": 289,
+      "score": 2010,
       "short": "TS",
       "full": "Technical Service",
-      "mins": 289,
+      "mins": 2010,
       "commits": 0,
       "crons": 0
     },
     {
-      "score": 7,
+      "score": 1809,
+      "short": "HR",
+      "full": "Human Resources",
+      "mins": 1809,
+      "commits": 0,
+      "crons": 0
+    },
+    {
+      "score": 1620,
+      "short": "SE",
+      "full": "Software Engineer",
+      "mins": 1620,
+      "commits": 0,
+      "crons": 0
+    },
+    {
+      "score": 1454,
+      "short": "DE",
+      "full": "Data Engineer",
+      "mins": 1454,
+      "commits": 0,
+      "crons": 0
+    },
+    {
+      "score": 1399,
+      "short": "PM",
+      "full": "Project Manager",
+      "mins": 1389,
+      "commits": 1,
+      "crons": 0
+    },
+    {
+      "score": 592,
+      "short": "BA",
+      "full": "Business Analyst",
+      "mins": 592,
+      "commits": 0,
+      "crons": 0
+    },
+    {
+      "score": 591,
       "short": "WR",
       "full": "Web Researcher",
-      "mins": 7,
+      "mins": 591,
       "commits": 0,
       "crons": 0
     },
@@ -55,14 +63,6 @@
       "short": "TST",
       "full": "Tester",
       "mins": 3,
-      "commits": 0,
-      "crons": 0
-    },
-    {
-      "score": 2,
-      "short": "HR",
-      "full": "Human Resources",
-      "mins": 2,
       "commits": 0,
       "crons": 0
     },
