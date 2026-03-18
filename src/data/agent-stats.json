@@ -1,60 +1,60 @@
 {
-  "generated": "2026-03-18T08:04:31+1300",
-  "since": "2026-03-18",
+  "generated": "2026-03-19T08:04:33+1300",
+  "since": "2026-03-19",
   "agents": [
     {
-      "score": 2010,
+      "score": 1591,
       "short": "TS",
       "full": "Technical Service",
-      "mins": 2010,
+      "mins": 1591,
       "commits": 0,
       "crons": 0
     },
     {
-      "score": 1809,
-      "short": "HR",
-      "full": "Human Resources",
-      "mins": 1809,
-      "commits": 0,
-      "crons": 0
-    },
-    {
-      "score": 1620,
-      "short": "SE",
-      "full": "Software Engineer",
-      "mins": 1620,
-      "commits": 0,
-      "crons": 0
-    },
-    {
-      "score": 1454,
+      "score": 1460,
       "short": "DE",
       "full": "Data Engineer",
-      "mins": 1454,
+      "mins": 1460,
       "commits": 0,
       "crons": 0
     },
     {
-      "score": 1399,
+      "score": 1417,
       "short": "PM",
       "full": "Project Manager",
-      "mins": 1389,
+      "mins": 1407,
       "commits": 1,
       "crons": 0
     },
     {
-      "score": 592,
-      "short": "BA",
-      "full": "Business Analyst",
-      "mins": 592,
+      "score": 1148,
+      "short": "SE",
+      "full": "Software Engineer",
+      "mins": 1148,
       "commits": 0,
       "crons": 0
     },
     {
-      "score": 591,
+      "score": 893,
+      "short": "BA",
+      "full": "Business Analyst",
+      "mins": 893,
+      "commits": 0,
+      "crons": 0
+    },
+    {
+      "score": 849,
       "short": "WR",
       "full": "Web Researcher",
-      "mins": 591,
+      "mins": 849,
+      "commits": 0,
+      "crons": 0
+    },
+    {
+      "score": 246,
+      "short": "HR",
+      "full": "Human Resources",
+      "mins": 246,
       "commits": 0,
       "crons": 0
     },
