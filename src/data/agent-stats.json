@@ -1,60 +1,60 @@
 {
-  "generated": "2026-03-19T08:04:33+1300",
-  "since": "2026-03-19",
+  "generated": "2026-03-20T08:04:51+1300",
+  "since": "2026-03-20",
   "agents": [
     {
-      "score": 1591,
-      "short": "TS",
-      "full": "Technical Service",
-      "mins": 1591,
-      "commits": 0,
-      "crons": 0
-    },
-    {
-      "score": 1460,
-      "short": "DE",
-      "full": "Data Engineer",
-      "mins": 1460,
-      "commits": 0,
-      "crons": 0
-    },
-    {
-      "score": 1417,
+      "score": 2153,
       "short": "PM",
       "full": "Project Manager",
-      "mins": 1407,
+      "mins": 2143,
       "commits": 1,
       "crons": 0
     },
     {
-      "score": 1148,
-      "short": "SE",
-      "full": "Software Engineer",
-      "mins": 1148,
+      "score": 1793,
+      "short": "TS",
+      "full": "Technical Service",
+      "mins": 1793,
       "commits": 0,
       "crons": 0
     },
     {
-      "score": 893,
-      "short": "BA",
-      "full": "Business Analyst",
-      "mins": 893,
+      "score": 1454,
+      "short": "DE",
+      "full": "Data Engineer",
+      "mins": 1454,
       "commits": 0,
       "crons": 0
     },
     {
-      "score": 849,
-      "short": "WR",
-      "full": "Web Researcher",
-      "mins": 849,
-      "commits": 0,
-      "crons": 0
-    },
-    {
-      "score": 246,
+      "score": 773,
       "short": "HR",
       "full": "Human Resources",
-      "mins": 246,
+      "mins": 773,
+      "commits": 0,
+      "crons": 0
+    },
+    {
+      "score": 753,
+      "short": "SE",
+      "full": "Software Engineer",
+      "mins": 753,
+      "commits": 0,
+      "crons": 0
+    },
+    {
+      "score": 699,
+      "short": "BA",
+      "full": "Business Analyst",
+      "mins": 699,
+      "commits": 0,
+      "crons": 0
+    },
+    {
+      "score": 694,
+      "short": "WR",
+      "full": "Web Researcher",
+      "mins": 694,
       "commits": 0,
       "crons": 0
     },
@@ -67,10 +67,10 @@
       "crons": 0
     },
     {
-      "score": 0,
+      "score": 1,
       "short": "DA",
       "full": "Data Analyst",
-      "mins": 0,
+      "mins": 1,
       "commits": 0,
       "crons": 0
     }
