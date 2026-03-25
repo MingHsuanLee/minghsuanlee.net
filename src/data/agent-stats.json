@@ -1,15 +1,7 @@
 {
-  "generated": "2026-03-25T08:04:37+1300",
-  "since": "2026-03-25",
+  "generated": "2026-03-26T08:04:44+1300",
+  "since": "2026-03-26",
   "agents": [
-    {
-      "score": 939,
-      "short": "TS",
-      "full": "Technical Service",
-      "mins": 939,
-      "commits": 0,
-      "crons": 0
-    },
     {
       "score": 99,
       "short": "DE",
@@ -31,6 +23,14 @@
       "short": "WR",
       "full": "Web Researcher",
       "mins": 7,
+      "commits": 0,
+      "crons": 0
+    },
+    {
+      "score": 3,
+      "short": "TS",
+      "full": "Technical Service",
+      "mins": 3,
       "commits": 0,
       "crons": 0
     },
