@@ -1,29 +1,21 @@
 {
-  "generated": "2026-03-29T08:04:36+1300",
-  "since": "2026-03-29",
+  "generated": "2026-03-30T08:04:36+1300",
+  "since": "2026-03-30",
   "agents": [
     {
-      "score": 226,
-      "short": "TS",
-      "full": "Technical Service",
-      "mins": 226,
-      "commits": 0,
-      "crons": 0
-    },
-    {
-      "score": 99,
-      "short": "DE",
-      "full": "Data Engineer",
-      "mins": 99,
-      "commits": 0,
-      "crons": 0
-    },
-    {
-      "score": 15,
+      "score": 312,
       "short": "PM",
       "full": "Project Manager",
-      "mins": 5,
+      "mins": 302,
       "commits": 1,
+      "crons": 0
+    },
+    {
+      "score": 100,
+      "short": "DE",
+      "full": "Data Engineer",
+      "mins": 100,
+      "commits": 0,
       "crons": 0
     },
     {
@@ -35,10 +27,18 @@
       "crons": 0
     },
     {
-      "score": 2,
+      "score": 3,
       "short": "SE",
       "full": "Software Engineer",
-      "mins": 2,
+      "mins": 3,
+      "commits": 0,
+      "crons": 0
+    },
+    {
+      "score": 3,
+      "short": "TS",
+      "full": "Technical Service",
+      "mins": 3,
       "commits": 0,
       "crons": 0
     },
