@@ -1,36 +1,20 @@
 {
-  "generated": "2026-04-02T08:10:35+1300",
-  "since": "2026-04-02",
+  "generated": "2026-04-03T08:10:52+1300",
+  "since": "2026-04-03",
   "agents": [
     {
-      "score": 1036,
+      "score": 767,
       "short": "PM",
       "full": "Project Manager",
-      "mins": 1026,
+      "mins": 757,
       "commits": 1,
       "crons": 0
     },
     {
-      "score": 1011,
-      "short": "HR",
-      "full": "Human Resources",
-      "mins": 1011,
-      "commits": 0,
-      "crons": 0
-    },
-    {
-      "score": 495,
-      "short": "BA",
-      "full": "Business Analyst",
-      "mins": 495,
-      "commits": 0,
-      "crons": 0
-    },
-    {
-      "score": 107,
+      "score": 98,
       "short": "DE",
       "full": "Data Engineer",
-      "mins": 107,
+      "mins": 98,
       "commits": 0,
       "crons": 0
     },
@@ -52,9 +36,25 @@
     },
     {
       "score": 3,
+      "short": "HR",
+      "full": "Human Resources",
+      "mins": 3,
+      "commits": 0,
+      "crons": 0
+    },
+    {
+      "score": 2,
       "short": "TS",
       "full": "Technical Service",
-      "mins": 3,
+      "mins": 2,
+      "commits": 0,
+      "crons": 0
+    },
+    {
+      "score": 2,
+      "short": "BA",
+      "full": "Business Analyst",
+      "mins": 2,
       "commits": 0,
       "crons": 0
     },
