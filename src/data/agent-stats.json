@@ -1,52 +1,52 @@
 {
-  "generated": "2026-04-04T08:01:59+1300",
-  "since": "2026-04-04",
+  "generated": "2026-04-05T08:00:48+1300",
+  "since": "2026-04-05",
   "agents": [
     {
-      "score": 105,
-      "short": "DE",
-      "full": "Data Engineer",
-      "mins": 105,
+      "score": 1416,
+      "short": "TS",
+      "full": "Technical Service",
+      "mins": 1416,
       "commits": 0,
       "crons": 0
     },
     {
-      "score": 12,
+      "score": 934,
       "short": "PM",
       "full": "Project Manager",
-      "mins": 2,
+      "mins": 924,
       "commits": 1,
       "crons": 0
     },
     {
-      "score": 4,
-      "short": "SE",
-      "full": "Software Engineer",
-      "mins": 4,
-      "commits": 0,
-      "crons": 0
-    },
-    {
-      "score": 0,
-      "short": "TS",
-      "full": "Technical Service",
-      "mins": 0,
-      "commits": 0,
-      "crons": 0
-    },
-    {
-      "score": 0,
+      "score": 495,
       "short": "HR",
       "full": "Human Resources",
-      "mins": 0,
+      "mins": 495,
       "commits": 0,
       "crons": 0
     },
     {
-      "score": 0,
+      "score": 115,
+      "short": "DE",
+      "full": "Data Engineer",
+      "mins": 115,
+      "commits": 0,
+      "crons": 0
+    },
+    {
+      "score": 5,
       "short": "BA",
       "full": "Business Analyst",
-      "mins": 0,
+      "mins": 5,
+      "commits": 0,
+      "crons": 0
+    },
+    {
+      "score": 1,
+      "short": "SE",
+      "full": "Software Engineer",
+      "mins": 1,
       "commits": 0,
       "crons": 0
     },
