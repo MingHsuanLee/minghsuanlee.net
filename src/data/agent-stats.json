@@ -1,13 +1,13 @@
 {
-  "generated": "2026-04-07T09:19:42+1300",
+  "generated": "2026-04-07T20:00:02+1300",
   "since": "2026-04-07",
   "agents": [
     {
-      "score": 0,
+      "score": 10,
       "short": "PM",
       "full": "Project Manager",
       "mins": 0,
-      "commits": 0,
+      "commits": 1,
       "crons": 0
     },
     {
