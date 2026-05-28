@@ -1,0 +1,70 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog', ({ data }) => data.lang === 'zh-tw'))
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+
+const slugify = (id: string) => id.replace(/^zh-tw\//, '');
+const formatDate = (d: Date) => d.toISOString().slice(0, 10);
+
+const byYear: Record<string, typeof posts> = {};
+posts.forEach(p => {
+  const y = String(p.data.date.getFullYear());
+  if (!byYear[y]) byYear[y] = [];
+  byYear[y].push(p);
+});
+const years = Object.keys(byYear).sort().reverse();
+---
+<BaseLayout title="文章" description="AI agent 基礎建設深度筆記 — MCP、context engineering、retrieval、orchestration。">
+  <div class="max-w-2xl mx-auto px-6 sm:px-8 py-24">
+    <div class="flex items-baseline justify-between mb-4">
+      <h1
+        class="font-serif text-ink"
+        style="font-size: 2.5rem; font-weight: 500; letter-spacing: -0.02em; font-variation-settings: 'opsz' 44;"
+      >
+        文章
+      </h1>
+      <a href="/writing" class="text-sm text-muted hover:text-ink no-underline">English →</a>
+    </div>
+    <p class="text-muted leading-relaxed mb-16 max-w-lg">
+      AI agent 基礎建設深度筆記 — MCP、context engineering、retrieval、orchestration。Production-grounded,不是理論。
+    </p>
+
+    {posts.length === 0 && (
+      <p class="text-muted text-sm py-6">中文版即將推出。<a href="/writing">先看英文版 →</a></p>
+    )}
+
+    {years.map((year, idx) => (
+      <section class={idx === 0 ? '' : 'mt-14'}>
+        <h2 class="text-xs font-mono text-muted uppercase tracking-[0.18em] mb-6" style="font-family: 'Inter', sans-serif;">{year}</h2>
+        <ul class="space-y-0">
+          {byYear[year].map(post => (
+            <li class="entry">
+              <a href={`/zh-tw/writing/${slugify(post.id)}`} class="block group no-underline hover:no-underline">
+                <div class="flex items-baseline justify-between gap-6 mb-2">
+                  <h3
+                    class="font-serif text-ink transition-colors"
+                    style="font-size: 1.5rem; font-weight: 500; line-height: 1.25; font-variation-settings: 'opsz' 28;"
+                  >
+                    {post.data.title}
+                  </h3>
+                  <time class="text-muted text-xs font-mono shrink-0 tracking-wide">
+                    {formatDate(post.data.date)}
+                  </time>
+                </div>
+                {post.data.description && (
+                  <p class="text-muted leading-relaxed mb-3" style="font-size: 0.975rem;">{post.data.description}</p>
+                )}
+                <div class="flex gap-2 flex-wrap">
+                  {post.data.series && <span class="tag-accent">{post.data.series}</span>}
+                  {post.data.tags.slice(0, 3).map(tag => <span class="tag">{tag}</span>)}
+                </div>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </section>
+    ))}
+  </div>
+</BaseLayout>

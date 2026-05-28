@@ -6,17 +6,13 @@ interface Props {
   description?: string;
 }
 
-const { title, description = 'AI Agent Addiction — Where AI agents build in public.' } = Astro.props;
+const { title, description = 'MingHsuan Lee — writing about AI agent infrastructure at production scale.' } = Astro.props;
 
 const nav = [
   { href: '/', label: 'Home' },
+  { href: '/writing', label: 'Writing' },
+  { href: '/now', label: 'Now' },
   { href: '/about', label: 'About' },
-  { href: '/agents', label: 'Agents' },
-  { href: '/openclaw', label: 'OpenClaw' },
-  { href: '/projects', label: 'Projects' },
-  { href: '/blog', label: 'Blog' },
-  { href: '/news', label: 'News' },
-  { href: '/episodes', label: 'Episodes' },
   { href: '/contact', label: 'Contact' },
 ];
 
@@ -24,25 +20,28 @@ const pathname = Astro.url.pathname;
 const canonicalUrl = new URL(pathname, Astro.site ?? "https://minghsuanlee.net").toString();
 ---
 <!DOCTYPE html>
-<html lang="en" class="bg-navy text-white">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
     <link rel="canonical" href={canonicalUrl} />
-    <meta property="og:title" content={`${title} | AIA`} />
+    <meta property="og:title" content={`${title} | MingHsuan Lee`} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonicalUrl} />
     <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="AI Agent Addiction" />
+    <meta property="og:site_name" content="MingHsuan Lee" />
     <meta name="twitter:card" content="summary" />
-    <meta name="twitter:title" content={`${title} | AIA`} />
+    <meta name="twitter:title" content={`${title} | MingHsuan Lee`} />
     <meta name="twitter:description" content={description} />
-    <title>{title} | AIA</title>
+    <title>{title} | MingHsuan Lee</title>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-    <!-- Google Analytics -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Newsreader:opsz,wght@6..72,300;6..72,400;6..72,500;6..72,600;6..72,700&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-FBSFZSE7XP"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -51,47 +50,33 @@ const canonicalUrl = new URL(pathname, Astro.site ?? "https://minghsuanlee.net")
       gtag('config', 'G-FBSFZSE7XP');
     </script>
   </head>
-  <body class="bg-navy min-h-screen flex flex-col font-sans">
-    <!-- Nav -->
-    <nav class="border-b border-white/10 sticky top-0 z-50 bg-navy/95 backdrop-blur-sm">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  <body class="bg-paper min-h-screen flex flex-col font-sans text-text">
+    <!-- Nav (sticky on scroll) -->
+    <nav class="sticky top-0 z-50 bg-paper/95 backdrop-blur-sm border-b border-rule">
+      <div class="max-w-3xl mx-auto px-6 sm:px-8">
         <div class="flex items-center justify-between h-16">
-          <a href="/" class="flex items-center gap-2 font-bold text-xl">
-            <span class="text-cyan-400">AIA</span>
-            <span class="text-white/60 text-sm font-normal hidden sm:block">AI Agent Addiction</span>
+          <a href="/" class="font-serif text-ink no-underline hover:no-underline" style="font-weight: 600; font-size: 1.0625rem; font-variation-settings: 'opsz' 18; letter-spacing: -0.01em;">
+            MingHsuan&nbsp;Lee
           </a>
-          <!-- Desktop nav -->
-          <div class="hidden lg:flex items-center gap-1">
-            {nav.map(({ href, label }) => (
+          <div class="flex items-center gap-0.5 text-sm">
+            {nav.filter(n => n.href !== '/').map(({ href, label }) => (
               <a
                 href={href}
-                class={`px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
+                class={`px-3 py-2 transition-colors hover:no-underline ${
                   pathname === href || (href !== '/' && pathname.startsWith(href))
-                    ? 'text-cyan-400 bg-cyan-400/10'
-                    : 'text-white/70 hover:text-white hover:bg-white/5'
+                    ? 'text-ink font-semibold'
+                    : 'text-muted hover:text-ink'
                 }`}
               >
                 {label}
               </a>
             ))}
-          </div>
-          <!-- Mobile hamburger placeholder -->
-          <div class="lg:hidden text-white/60 text-sm">☰ Menu</div>
-        </div>
-        <!-- Mobile nav -->
-        <div class="lg:hidden pb-3 flex flex-wrap gap-1">
-          {nav.map(({ href, label }) => (
-            <a
-              href={href}
-              class={`px-3 py-1.5 rounded text-xs font-medium transition-colors ${
-                pathname === href || (href !== '/' && pathname.startsWith(href))
-                  ? 'text-cyan-400 bg-cyan-400/10'
-                  : 'text-white/60 hover:text-white'
-              }`}
-            >
-              {label}
+            <span class="text-rule mx-2 hidden sm:inline">·</span>
+            <a href="https://github.com/MingHsuanLee" target="_blank" rel="noopener noreferrer"
+               class="px-3 py-2 text-muted hover:text-ink transition-colors text-sm hover:no-underline hidden sm:inline">
+              GitHub <span class="text-xs">↗</span>
             </a>
-          ))}
+          </div>
         </div>
       </div>
     </nav>
@@ -102,9 +87,17 @@ const canonicalUrl = new URL(pathname, Astro.site ?? "https://minghsuanlee.net")
     </main>
 
     <!-- Footer -->
-    <footer class="border-t border-white/10 mt-16 py-8 text-center text-white/40 text-sm">
-      <p>Built by AI agents using <a href="https://openclaw.ai" class="text-cyan-400 hover:underline">OpenClaw</a></p>
-      <p class="mt-1">© {new Date().getFullYear()} MingHsuan Lee</p>
+    <footer class="mt-32 pt-12 pb-12 border-t border-ruleLight">
+      <div class="max-w-3xl mx-auto px-6 sm:px-8 text-sm text-muted">
+        <div class="flex flex-wrap items-baseline justify-between gap-4">
+          <p class="font-serif" style="font-variation-settings: 'opsz' 16;">© {new Date().getFullYear()} MingHsuan Lee — Auckland, NZ</p>
+          <div class="flex items-center gap-5">
+            <a href="/contact#subscribe" class="text-muted hover:text-ink">Subscribe</a>
+            <a href="https://github.com/MingHsuanLee" target="_blank" rel="noopener noreferrer" class="text-muted hover:text-ink">GitHub ↗</a>
+            <a href="https://www.linkedin.com/in/minghsuanlee/" target="_blank" rel="noopener noreferrer" class="text-muted hover:text-ink">LinkedIn ↗</a>
+          </div>
+        </div>
+      </div>
     </footer>
   </body>
 </html>

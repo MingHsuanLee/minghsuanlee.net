@@ -1,0 +1,55 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const lastUpdated = '2026-05-28';
+---
+<BaseLayout title="Now" description="MingHsuan Lee 目前在做什麼、學什麼、build 什麼。">
+  <div class="max-w-2xl mx-auto px-6 sm:px-8 py-24">
+    <div class="flex items-baseline justify-between mb-4">
+      <h1
+        class="font-serif text-ink"
+        style="font-size: 2.5rem; font-weight: 500; letter-spacing: -0.02em; font-variation-settings: 'opsz' 44;"
+      >
+        Now
+      </h1>
+      <a href="/now" class="text-sm text-muted hover:text-ink no-underline">English →</a>
+    </div>
+    <p class="text-muted text-xs font-mono tracking-wider uppercase mb-16">
+      Last updated &nbsp;·&nbsp; {lastUpdated}
+    </p>
+
+    <div class="space-y-14">
+      <section>
+        <h2 class="text-xs font-mono text-muted uppercase tracking-[0.18em] mb-5" style="font-family: 'Inter', sans-serif;">目前主力</h2>
+        <ul class="space-y-3 text-text leading-relaxed" style="font-size: 1.0625rem;">
+          <li class="pl-5 relative before:content-['—'] before:absolute before:left-0 before:text-muted">寫 Context Engineering 系列 — embeddings / retrieval / context 管理的 production 決策。</li>
+          <li class="pl-5 relative before:content-['—'] before:absolute before:left-0 before:text-muted">Ship 個人投資研究 agent 收費版 — 把它變成小型 SaaS。</li>
+          <li class="pl-5 relative before:content-['—'] before:absolute before:left-0 before:text-muted">跑個人 AI 助理 lab,處理 code review / ops / 內容草稿。</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 class="text-xs font-mono text-muted uppercase tracking-[0.18em] mb-5" style="font-family: 'Inter', sans-serif;">最近 ship</h2>
+        <ul class="space-y-3 text-text leading-relaxed" style="font-size: 1.0625rem;">
+          <li class="pl-5 relative before:content-['—'] before:absolute before:left-0 before:text-muted">雙語 blog(英文 / 繁體中文) — 同樣內容雙語並行。</li>
+          <li class="pl-5 relative before:content-['—'] before:absolute before:left-0 before:text-muted">網站重構,聚焦 writing,不再以 agent demo 為主軸。</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 class="text-xs font-mono text-muted uppercase tracking-[0.18em] mb-5" style="font-family: 'Inter', sans-serif;">目前在學</h2>
+        <ul class="space-y-3 text-text leading-relaxed" style="font-size: 1.0625rem;">
+          <li class="pl-5 relative before:content-['—'] before:absolute before:left-0 before:text-muted">大規模 MCP server 設計模式 — discovery / versioning / security 邊界。</li>
+          <li class="pl-5 relative before:content-['—'] before:absolute before:left-0 before:text-muted">Hybrid retrieval(vector + lexical + rerank)在混語料的 trade-off。</li>
+          <li class="pl-5 relative before:content-['—'] before:absolute before:left-0 before:text-muted">單一 VPS 上跑多個 production AI agent 的營運經濟學。</li>
+        </ul>
+      </section>
+
+      <div class="ornament" aria-hidden="true"></div>
+
+      <p class="text-muted text-sm leading-relaxed">
+        這頁焦點轉移時就會更新 — 通常一個月一次。靈感來自 <a href="https://nownownow.com/about" target="_blank" rel="noopener noreferrer">now page movement</a>。
+      </p>
+    </div>
+  </div>
+</BaseLayout>

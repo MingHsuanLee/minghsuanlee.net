@@ -1,130 +1,112 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
-import statsRaw from '../data/agent-stats.json';
 
-const recentBlog = (await getCollection('blog')).sort((a, b) => b.data.date.getTime() - a.data.date.getTime()).slice(0, 3);
-const recentNews = (await getCollection('news')).sort((a, b) => b.data.date.getTime() - a.data.date.getTime()).slice(0, 3);
-const recentEpisodes = (await getCollection('episodes')).sort((a, b) => b.data.episode_number - a.data.episode_number).slice(0, 3);
+const recentWriting = (await getCollection('blog', ({ data }) => data.lang === 'en'))
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
+  .slice(0, 5);
 
-const agentStats = statsRaw.agents;
-// statsRaw.since is a plain date string (YYYY-MM-DD) — append T12:00:00 to
-// avoid UTC-offset rendering the wrong day during Cloudflare UTC builds.
-const sinceDate = new Date(statsRaw.since + 'T12:00:00');
-const sinceLabel = sinceDate.toLocaleDateString('en-NZ', { weekday: 'short', month: 'short', day: 'numeric' });
+const slugify = (id: string) => id.replace(/^en\//, '');
+const formatDate = (d: Date) => d.toISOString().slice(0, 10);
 ---
 <BaseLayout title="Home">
-  <!-- Hero -->
-  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-8 text-center">
-    <div class="inline-block text-sm font-mono text-cyan-400 bg-cyan-400/10 border border-cyan-400/20 px-4 py-1.5 rounded-full mb-6">
-      AI Agent Addiction
-    </div>
-    <h1 class="text-5xl sm:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
-      <span class="text-white">AIA —</span><br />
-      <span class="text-cyan-400">AI Agents</span>
-      <span class="text-white"> Building</span><br />
-      <span class="text-gold-400" style="color: #FFD200;">in Public.</span>
+  <!-- Intro -->
+  <section class="max-w-2xl mx-auto px-6 sm:px-8 pt-28 pb-16">
+    <h1
+      class="font-serif text-ink mb-5"
+      style="font-size: 3.25rem; font-weight: 500; line-height: 1.05; letter-spacing: -0.025em; font-variation-settings: 'opsz' 56;"
+    >
+      MingHsuan Lee
     </h1>
-    <p class="text-xl text-white/60 max-w-2xl mx-auto mb-10">
-      MingHsuan Lee and a growing team of AI agents — building real systems, shipping real code, and documenting everything.
-    </p>
-    <div class="flex justify-center">
-      <a href="https://openclaw.ai" target="_blank" rel="noopener noreferrer"
-         class="bg-cyan-400 text-navy font-bold px-8 py-3 rounded-lg hover:bg-cyan-300 transition-colors">
-        Explore OpenClaw →
-      </a>
+    <p class="text-muted text-sm font-mono mb-10 tracking-wide">AI ENGINEER &nbsp;·&nbsp; AUCKLAND, NZ</p>
+
+    <div class="space-y-5 text-lg leading-relaxed text-text max-w-xl" style="font-size: 1.15rem; line-height: 1.65;">
+      <p>
+        I write about <em>AI agent infrastructure</em> &mdash; MCP, context engineering, retrieval, and orchestration at production scale.
+      </p>
+      <p>
+        The notes here come from shipping multiple production AI agents on small, self-hosted infrastructure. The trade-offs, the decisions, the things worth knowing before you ship.
+      </p>
+    </div>
+
+    <div class="mt-10 flex flex-wrap gap-3">
+      <a href="/writing" class="btn-primary no-underline">Read latest writing →</a>
+      <a href="/contact#subscribe" class="btn-secondary no-underline">Subscribe</a>
     </div>
   </section>
 
-
-  <!-- Latest Episodes -->
-  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-    <div class="flex items-baseline justify-between mb-6">
-      <h2 class="text-2xl font-bold">
-        <span class="text-cyan-400">▶</span> Latest Episodes
-      </h2>
-      <a href="/episodes" class="text-cyan-400 text-sm hover:text-cyan-300 transition-colors">View all →</a>
+  <!-- Latest writing -->
+  <section class="max-w-2xl mx-auto px-6 sm:px-8 py-12">
+    <div class="flex items-baseline justify-between mb-8 pb-3 border-b border-rule">
+      <h2 class="text-xs font-mono text-muted uppercase tracking-[0.18em]" style="font-family: 'Inter', sans-serif;">Latest writing</h2>
+      <a href="/writing" class="text-sm text-muted hover:text-ink no-underline">Archive →</a>
     </div>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-      {recentEpisodes.map((ep) => {
-        const videoId = ep.data.video_url.split('v=')[1];
-        return (
-          <div class="flex flex-col gap-3">
-            <div class="relative w-full" style="padding-bottom: 56.25%;">
-              <iframe
-                class="absolute inset-0 w-full h-full rounded-xl"
-                src={`https://www.youtube.com/embed/${videoId}`}
-                title={ep.data.title}
-                frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowfullscreen
-              ></iframe>
-            </div>
-            <div>
-              <div class="text-xs text-cyan-400 font-mono mb-1">EP {String(ep.data.episode_number).padStart(2, '0')}</div>
-              <a href={`/episodes`} class="text-white font-medium text-sm hover:text-cyan-400 transition-colors leading-snug">{ep.data.title}</a>
-            </div>
-          </div>
-        );
-      })}
-    </div>
+    {recentWriting.length === 0 ? (
+      <p class="text-muted text-sm py-6">Next post drops shortly.</p>
+    ) : (
+      <ul class="space-y-0">
+        {recentWriting.map((post) => (
+          <li class="entry">
+            <a href={`/writing/${slugify(post.id)}`} class="block group no-underline hover:no-underline">
+              <div class="flex items-baseline justify-between gap-6 mb-2">
+                <h3
+                  class="font-serif text-ink transition-colors"
+                  style="font-size: 1.5rem; font-weight: 500; line-height: 1.25; font-variation-settings: 'opsz' 28;"
+                >
+                  {post.data.title}
+                </h3>
+                <time class="text-muted text-xs font-mono shrink-0 tracking-wide">
+                  {formatDate(post.data.date)}
+                </time>
+              </div>
+              {post.data.description && (
+                <p class="text-muted leading-relaxed" style="font-size: 0.975rem;">{post.data.description}</p>
+              )}
+              {post.data.series && (
+                <div class="mt-3">
+                  <span class="tag-accent">{post.data.series}</span>
+                </div>
+              )}
+            </a>
+          </li>
+        ))}
+      </ul>
+    )}
   </section>
 
-  <!-- Agent Stats -->
-  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-    <div class="flex items-baseline gap-3 mb-6">
-      <h2 class="text-2xl font-bold">
-        <span class="text-cyan-400">●</span> Agent Stats Today
-      </h2>
-      <span class="text-white/30 text-sm">since 7:00 AM · {sinceLabel}</span>
-    </div>
-    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
-      {agentStats.map(({ short, full, mins, commits }) => (
-        <div class="bg-white/5 border border-white/10 rounded-xl p-4 hover:border-cyan-400/30 transition-colors">
-          <div class="mb-3">
-            <div class="text-cyan-400 font-bold text-sm">{short}</div>
-            <div class="text-white/30 text-xs">{full}</div>
-          </div>
-          <div class="h-px bg-white/5 mb-3"></div>
-          <div class="grid grid-cols-2 gap-1">
-            <div>
-              <div class={`text-lg font-bold leading-none ${mins > 0 ? 'text-yellow-400' : 'text-white'}`}>{mins}</div>
-              <div class="text-white/25 text-xs mt-1">MINS</div>
-            </div>
-            <div>
-              <div class={`text-lg font-bold leading-none ${commits > 0 ? 'text-yellow-400' : 'text-white'}`}>{commits}</div>
-              <div class="text-white/25 text-xs mt-1">COMMITS</div>
-            </div>
-          </div>
+  <!-- Ornament -->
+  <div class="ornament" aria-hidden="true"></div>
+
+  <!-- Subscribe band -->
+  <section class="max-w-2xl mx-auto px-6 sm:px-8 py-8">
+    <div class="border-y border-rule py-10">
+      <div class="flex flex-col gap-4 text-center">
+        <h3 class="font-serif text-ink" style="font-size: 1.75rem; font-weight: 500; font-variation-settings: 'opsz' 28;">Get new posts by email</h3>
+        <p class="text-muted text-base max-w-md mx-auto leading-relaxed">
+          One email per post. Long-form notes on AI agent infrastructure. No promotions.
+        </p>
+        <div class="mt-2">
+          <a href="/contact#subscribe" class="btn-primary no-underline">Subscribe →</a>
         </div>
-      ))}
+      </div>
     </div>
   </section>
 
-  <!-- Recent Blog + News -->
-  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 grid md:grid-cols-2 gap-10">
+  <!-- Quick links -->
+  <section class="max-w-2xl mx-auto px-6 sm:px-8 py-16 grid sm:grid-cols-2 gap-x-12 gap-y-10">
     <div>
-      <h2 class="text-xl font-bold mb-4">Latest Posts</h2>
-      <div class="space-y-3">
-        {recentBlog.map((post) => (
-          <a href={`/blog/${post.id}`} class="block card hover:no-underline">
-            <div class="font-medium text-white">{post.data.title}</div>
-            <div class="text-white/40 text-sm mt-1">{post.data.date.toLocaleDateString()} · {post.data.author.toUpperCase()}</div>
-          </a>
-        ))}
-      </div>
+      <h3 class="text-xs font-mono text-muted uppercase tracking-[0.18em] mb-3">Now</h3>
+      <p class="text-text leading-relaxed mb-3">
+        Currently working on AI agent infrastructure and writing.
+      </p>
+      <a href="/now" class="text-sm">What I'm working on →</a>
     </div>
     <div>
-      <h2 class="text-xl font-bold mb-4">News</h2>
-      <div class="space-y-3">
-        {recentNews.map((item) => (
-          <div class="card">
-            <div class="font-medium text-white">{item.data.title}</div>
-            <div class="text-white/60 text-sm mt-1">{item.data.summary}</div>
-            <div class="text-white/30 text-xs mt-2">{item.data.date.toLocaleDateString()}</div>
-          </div>
-        ))}
-      </div>
+      <h3 class="text-xs font-mono text-muted uppercase tracking-[0.18em] mb-3">About</h3>
+      <p class="text-text leading-relaxed mb-3">
+        Background, current role, and what I think about.
+      </p>
+      <a href="/about" class="text-sm">More about me →</a>
     </div>
   </section>
 </BaseLayout>

@@ -4,31 +4,305 @@
 
 @layer base {
   html {
-    background-color: #0F1423;
-    color: white;
+    background-color: #F7F4ED;
+    color: #2A2622;
     scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
   }
   body {
     min-height: 100vh;
-    background-color: #0F1423;
+    /* Layered background: warm cream + subtle radial vignette for depth */
+    background-color: #F7F4ED;
+    background-image:
+      radial-gradient(
+        ellipse at center,
+        rgba(247, 244, 237, 0) 0%,
+        rgba(225, 218, 200, 0.25) 100%
+      );
+    background-attachment: fixed;
+    font-feature-settings: "ss01", "cv11", "tnum";
+    font-size: 17px;
+    position: relative;
+  }
+  /* Paper noise overlay — fine paper grain (between subtle v1 and bold v2) */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1000;
+    opacity: 0.6;
+    mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='280' height='280'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.825' numOctaves='2' stitchTiles='stitch' seed='3'/><feColorMatrix values='0 0 0 0 0.07 0 0 0 0 0.06 0 0 0 0 0.05 0 0 0 0.35 -0.12'/></filter><rect width='280' height='280' filter='url(%23n)'/></svg>");
+    background-size: 280px 280px;
+  }
+  /* Make sure content sits above noise */
+  body > main, body > footer {
+    position: relative;
+    z-index: 1;
+  }
+  /* Sticky nav: above noise overlay so it stays clean on scroll */
+  body > nav {
+    z-index: 1100;
+  }
+
+  /* Headlines use Newsreader serif with optical sizing */
+  h1, h2, h3, h4 {
+    font-family: 'Newsreader', Georgia, serif;
+    color: #171717;
+    font-weight: 500;
+    letter-spacing: -0.015em;
+    line-height: 1.15;
+  }
+  h1 {
+    font-variation-settings: "opsz" 48;
+  }
+  h2, h3 {
+    font-variation-settings: "opsz" 32;
+  }
+
+  /* Links — refined underline behavior */
+  a {
+    color: #0F4C3A;
+    text-decoration: none;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+  }
+  a:hover {
+    color: #0A3527;
+    text-decoration: underline;
+  }
+
+  /* Selection */
+  ::selection {
+    background-color: #0F4C3A;
+    color: #F7F4ED;
+  }
+
+  /* Numerals — use tabular figures for dates/numbers in mono */
+  .font-mono, time, .tabular {
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* Em-dash spacing & emphasis */
+  em {
+    font-style: italic;
+    color: inherit;
   }
 }
 
 @layer components {
   .btn-primary {
-    @apply font-bold px-6 py-3 rounded-lg transition-colors;
-    background-color: #00B4DC;
-    color: #0F1423;
+    @apply font-medium px-5 py-2.5 rounded-sm transition-all text-sm tracking-wide;
+    background-color: #171717;
+    color: #F7F4ED;
+    border: 1px solid #171717;
   }
+  .btn-primary:hover {
+    background-color: #0F4C3A;
+    border-color: #0F4C3A;
+    text-decoration: none;
+  }
+  .btn-secondary {
+    @apply font-medium px-5 py-2.5 rounded-sm transition-all text-sm tracking-wide;
+    background-color: transparent;
+    color: #2A2622;
+    border: 1px solid #D8D2C4;
+  }
+  .btn-secondary:hover {
+    border-color: #171717;
+    color: #171717;
+    text-decoration: none;
+  }
+
+  /* Entry — flat list item style with hairline rule */
+  .entry {
+    @apply py-6 transition-all;
+    border-bottom: 1px solid #E5E0D4;
+  }
+  .entry:last-child {
+    border-bottom: none;
+  }
+  .entry:hover h3 {
+    color: #0F4C3A;
+  }
+
+  /* Restyled card — minimal frame */
   .card {
-    @apply rounded-xl p-6 transition-colors;
-    background-color: rgba(255,255,255,0.05);
-    border: 1px solid rgba(255,255,255,0.1);
+    @apply rounded-sm p-6 transition-all;
+    background-color: transparent;
+    border: 1px solid #D8D2C4;
   }
+
+  /* Tags — subtle, no fill */
   .tag {
-    @apply text-xs px-2 py-0.5 rounded;
-    background-color: rgba(0,180,220,0.1);
-    color: #00B4DC;
-    border: 1px solid rgba(0,180,220,0.2);
+    @apply text-xs px-2 py-0.5 inline-block tracking-wide uppercase;
+    background-color: transparent;
+    color: #6B655B;
+    border: 1px solid #D8D2C4;
+    border-radius: 2px;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+  }
+  .tag-accent {
+    @apply text-xs px-2 py-0.5 inline-block tracking-wide uppercase;
+    background-color: transparent;
+    color: #0F4C3A;
+    border: 1px solid #0F4C3A;
+    border-radius: 2px;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+  }
+
+  /* Subtle hairline rule */
+  .rule-hairline {
+    border-color: #D8D2C4;
+  }
+
+  /* Decorative ornament for section breaks */
+  .ornament {
+    text-align: center;
+    color: #6B655B;
+    letter-spacing: 0.5em;
+    font-size: 0.75rem;
+    margin: 2.5rem 0;
+  }
+  .ornament::before {
+    content: "·  ·  ·";
+  }
+
+  /* Article body — luxury editorial typography */
+  .prose-article {
+    color: #2A2622;
+    line-height: 1.7;
+    font-size: 1.0625rem;
+  }
+  .prose-article > p:first-of-type::first-letter {
+    /* optional drop cap — disabled by default, can enable per-article */
+  }
+  .prose-article h2 {
+    @apply text-3xl mt-16 mb-5;
+    font-family: 'Newsreader', Georgia, serif;
+    font-weight: 500;
+    font-variation-settings: "opsz" 32;
+    color: #171717;
+    letter-spacing: -0.015em;
+  }
+  .prose-article h3 {
+    @apply text-xl mt-10 mb-3;
+    font-family: 'Newsreader', Georgia, serif;
+    font-weight: 600;
+    font-variation-settings: "opsz" 24;
+    color: #171717;
+  }
+  .prose-article p {
+    @apply mb-5;
+  }
+  .prose-article a {
+    color: #0F4C3A;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-color: rgba(15, 76, 58, 0.35);
+    text-decoration-thickness: 1px;
+  }
+  .prose-article a:hover {
+    text-decoration-color: #0F4C3A;
+    text-decoration-thickness: 1.5px;
+  }
+  .prose-article strong {
+    font-weight: 600;
+    color: #171717;
+  }
+  .prose-article em {
+    font-style: italic;
+    color: #171717;
+  }
+  .prose-article code {
+    background-color: rgba(15, 76, 58, 0.07);
+    color: #0F4C3A;
+    padding: 0.1rem 0.4rem;
+    border-radius: 0.15rem;
+    font-size: 0.875em;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .prose-article pre {
+    background-color: #171717;
+    color: #E5E0D4;
+    padding: 1.25rem 1.5rem;
+    border-radius: 4px;
+    overflow-x: auto;
+    margin: 1.75rem 0;
+    font-size: 0.875rem;
+    line-height: 1.65;
+  }
+  .prose-article pre code {
+    background-color: transparent;
+    color: inherit;
+    padding: 0;
+  }
+  .prose-article blockquote {
+    border-left: 2px solid #0F4C3A;
+    padding: 0.25rem 0 0.25rem 1.5rem;
+    margin: 1.75rem 0;
+    color: #6B655B;
+    font-style: italic;
+    font-family: 'Newsreader', Georgia, serif;
+    font-size: 1.125rem;
+    font-variation-settings: "opsz" 20;
+  }
+  .prose-article ul, .prose-article ol {
+    @apply mb-5 pl-5;
+  }
+  .prose-article ul {
+    list-style: none;
+  }
+  .prose-article ul > li {
+    position: relative;
+    padding-left: 1.25rem;
+  }
+  .prose-article ul > li::before {
+    content: "—";
+    position: absolute;
+    left: 0;
+    color: #6B655B;
+  }
+  .prose-article ol {
+    list-style-type: decimal;
+  }
+  .prose-article li {
+    @apply mb-2;
+  }
+  .prose-article table {
+    @apply w-full my-7 text-sm;
+    border-collapse: collapse;
+  }
+  .prose-article th {
+    text-align: left;
+    padding: 0.625rem 0.75rem;
+    border-bottom: 2px solid #171717;
+    font-family: 'Inter', system-ui, sans-serif;
+    font-weight: 600;
+    color: #171717;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .prose-article td {
+    padding: 0.625rem 0.75rem;
+    border-bottom: 1px solid #E5E0D4;
+    vertical-align: top;
+  }
+  .prose-article hr {
+    border: none;
+    margin: 3rem 0;
+    text-align: center;
+  }
+  .prose-article hr::after {
+    content: "·  ·  ·";
+    color: #6B655B;
+    letter-spacing: 0.5em;
+    font-size: 0.75rem;
   }
 }

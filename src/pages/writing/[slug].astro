@@ -1,0 +1,83 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog', ({ data }) => data.lang === 'en');
+  return posts.map(post => {
+    const slug = post.id.replace(/^en\//, '');
+    return {
+      params: { slug },
+      props: { post, slug },
+    };
+  });
+}
+
+const { post, slug } = Astro.props;
+const { Content } = await render(post);
+
+const allPosts = await getCollection('blog');
+const zhSlug = `zh-tw/${slug}`;
+const hasZhVersion = allPosts.some(p => p.id === zhSlug);
+
+const formatDate = (d: Date) => d.toLocaleDateString('en-NZ', { year: 'numeric', month: 'long', day: 'numeric' });
+---
+<BaseLayout title={post.data.title} description={post.data.description}>
+  <article class="max-w-2xl mx-auto px-6 sm:px-8 py-24">
+    <div class="flex items-baseline justify-between mb-16 text-sm">
+      <a href="/writing" class="text-muted hover:text-ink no-underline">← Writing</a>
+      {hasZhVersion && (
+        <a href={`/zh-tw/writing/${slug}`} class="text-muted hover:text-ink no-underline">中文 →</a>
+      )}
+    </div>
+
+    <!-- Article header -->
+    <header class="mb-14">
+      <div class="text-muted text-xs font-mono tracking-wider uppercase mb-5">
+        <time>{formatDate(post.data.date)}</time>
+        {post.data.series && <> &nbsp;·&nbsp; <span class="text-accent">{post.data.series}</span></>}
+      </div>
+
+      <h1
+        class="font-serif text-ink mb-6"
+        style="font-size: 2.75rem; font-weight: 500; line-height: 1.1; letter-spacing: -0.025em; font-variation-settings: 'opsz' 56;"
+      >
+        {post.data.title}
+      </h1>
+
+      {post.data.description && (
+        <p
+          class="text-muted leading-snug font-serif italic"
+          style="font-size: 1.375rem; font-variation-settings: 'opsz' 24;"
+        >
+          {post.data.description}
+        </p>
+      )}
+    </header>
+
+    <hr class="border-rule border-t mb-14" />
+
+    <!-- Article body -->
+    <div class="prose-article">
+      <Content />
+    </div>
+
+    <!-- Footer ornament -->
+    <div class="ornament" aria-hidden="true"></div>
+
+    <!-- Subscribe footer -->
+    <div class="mt-14">
+      <div class="border-y border-rule py-10 text-center">
+        <h3 class="font-serif text-ink mb-2" style="font-size: 1.5rem; font-weight: 500;">Like this? Get the next post by email.</h3>
+        <p class="text-muted text-sm mb-5">No promotions. Unsubscribe anytime. Bilingual (EN + 繁體中文).</p>
+        <a href="/contact#subscribe" class="btn-primary inline-block no-underline">Subscribe →</a>
+      </div>
+
+      {post.data.tags.length > 0 && (
+        <div class="mt-8 flex flex-wrap gap-2">
+          {post.data.tags.map(tag => <span class="tag">{tag}</span>)}
+        </div>
+      )}
+    </div>
+  </article>
+</BaseLayout>

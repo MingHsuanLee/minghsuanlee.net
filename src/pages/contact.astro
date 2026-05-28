@@ -1,26 +1,59 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
----
-<BaseLayout title="Contact" description="Get in touch with MingHsuan Lee and the AIA team.">
-  <div class="max-w-2xl mx-auto px-4 sm:px-6 py-20">
-    <h1 class="text-4xl font-bold mb-2">Contact</h1>
-    <p class="text-white/50 mb-12">Ways to reach us.</p>
 
-    <div class="space-y-4">
-      {[
-        { icon: '📧', label: 'Email', href: 'mailto:ming@minghsuanlee.net', display: 'ming@minghsuanlee.net' },
-        { icon: '💼', label: 'LinkedIn', href: 'https://www.linkedin.com/in/minghsuanlee/', display: 'linkedin.com/in/minghsuanlee' },
-        { icon: '📺', label: 'YouTube', href: 'https://www.youtube.com/@aiagentaddicted', display: '@aiagentaddicted' },
-        { icon: '🐙', label: 'GitHub', href: 'https://github.com/MingHsuanLee', display: 'MingHsuanLee' },
-      ].map(({ icon, label, href, display }) => (
-        <div class="card flex items-center gap-4">
-          <span class="text-2xl">{icon}</span>
-          <div>
-            <div class="text-white/40 text-xs uppercase tracking-wide">{label}</div>
-            <a href={href} target="_blank" rel="noopener noreferrer" class="text-cyan-400 hover:underline">{display}</a>
-          </div>
-        </div>
-      ))}
-    </div>
+// TODO: replace with real Substack pub URL once Ming registers it
+const SUBSTACK_URL = 'https://aiagentaddiction.substack.com';
+---
+<BaseLayout title="Contact" description="Subscribe to the newsletter or get in touch.">
+  <div class="max-w-2xl mx-auto px-6 sm:px-8 py-24">
+    <h1
+      class="font-serif text-ink mb-4"
+      style="font-size: 2.5rem; font-weight: 500; letter-spacing: -0.02em; font-variation-settings: 'opsz' 44;"
+    >
+      Contact
+    </h1>
+    <p class="text-muted text-xs font-mono tracking-wider uppercase mb-16">
+      Subscribe or reach out directly
+    </p>
+
+    <!-- Subscribe -->
+    <section id="subscribe" class="border-y border-rule py-12 mb-20">
+      <h2 class="font-serif text-ink mb-4" style="font-size: 1.875rem; font-weight: 500; font-variation-settings: 'opsz' 28;">
+        Subscribe by email
+      </h2>
+      <p class="text-text leading-relaxed mb-7 max-w-lg">
+        New posts by email — long-form notes on AI agent infrastructure (MCP, context engineering, retrieval, orchestration). One email per post. No promotions, no roundups.
+      </p>
+      <a href={SUBSTACK_URL} target="_blank" rel="noopener noreferrer"
+         class="btn-primary inline-block no-underline">Subscribe on Substack →</a>
+      <p class="text-muted text-xs mt-5 tracking-wide">Free · Unsubscribe anytime · Bilingual (EN + 繁體中文).</p>
+    </section>
+
+    <!-- Other ways to reach -->
+    <section>
+      <h2 class="text-xs font-mono text-muted uppercase tracking-[0.18em] mb-8" style="font-family: 'Inter', sans-serif;">Other ways to reach me</h2>
+      <ul class="space-y-0">
+        {[
+          { label: 'Email', href: 'mailto:ming@minghsuanlee.net', display: 'ming@minghsuanlee.net' },
+          { label: 'GitHub', href: 'https://github.com/MingHsuanLee', display: 'github.com/MingHsuanLee' },
+          { label: 'LinkedIn', href: 'https://www.linkedin.com/in/minghsuanlee/', display: 'linkedin.com/in/minghsuanlee' },
+        ].map(({ label, href, display }) => (
+          <li class="entry">
+            <a href={href} target={href.startsWith('mailto:') ? undefined : '_blank'} rel="noopener noreferrer"
+               class="flex items-baseline justify-between gap-4 no-underline group hover:no-underline">
+              <div>
+                <div class="text-xs font-mono text-muted uppercase tracking-wider mb-1.5">{label}</div>
+                <div class="text-ink font-serif group-hover:text-accent transition-colors" style="font-size: 1.25rem; font-weight: 500;">{display}</div>
+              </div>
+              <div class="text-muted group-hover:text-accent text-base">→</div>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <p class="text-muted text-sm mt-20">
+      Auckland, New Zealand &nbsp;·&nbsp; UTC+12 / UTC+13.
+    </p>
   </div>
 </BaseLayout>
