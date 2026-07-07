@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 
-const lastUpdated = '2026-05-28';
+const lastUpdated = '2026-07-07';
 ---
 <BaseLayout title="Now" description="What MingHsuan Lee is currently working on, reading, and building.">
   <div class="max-w-2xl mx-auto px-6 sm:px-8 py-24">
@@ -12,7 +12,6 @@ const lastUpdated = '2026-05-28';
       >
         Now
       </h1>
-      <a href="/zh-tw/now" class="text-sm text-muted hover:text-ink no-underline">中文 →</a>
     </div>
     <p class="text-muted text-xs font-mono tracking-wider uppercase mb-16">
       Last updated &nbsp;·&nbsp; {lastUpdated}
@@ -22,8 +21,8 @@ const lastUpdated = '2026-05-28';
       <section>
         <h2 class="text-xs font-mono text-muted uppercase tracking-[0.18em] mb-5" style="font-family: 'Inter', sans-serif;">Currently focused on</h2>
         <ul class="space-y-3 text-text leading-relaxed" style="font-size: 1.0625rem;">
-          <li class="pl-5 relative before:content-['—'] before:absolute before:left-0 before:text-muted">Writing the Context Engineering series — production decisions for embeddings, retrieval, and context management.</li>
-          <li class="pl-5 relative before:content-['—'] before:absolute before:left-0 before:text-muted">Shipping the paid version of a personal investment-research agent — turning it into a small SaaS.</li>
+          <li class="pl-5 relative before:content-['—'] before:absolute before:left-0 before:text-muted">Writing about running AI in production — infrastructure, retrieval, and the decisions behind shipping agents.</li>
+          <li class="pl-5 relative before:content-['—'] before:absolute before:left-0 before:text-muted">Building and running several production AI agents on my own self-hosted infrastructure.</li>
           <li class="pl-5 relative before:content-['—'] before:absolute before:left-0 before:text-muted">Running a personal AI assistant lab for code review, ops, and content drafts.</li>
         </ul>
       </section>
@@ -31,7 +30,7 @@ const lastUpdated = '2026-05-28';
       <section>
         <h2 class="text-xs font-mono text-muted uppercase tracking-[0.18em] mb-5" style="font-family: 'Inter', sans-serif;">Recently shipped</h2>
         <ul class="space-y-3 text-text leading-relaxed" style="font-size: 1.0625rem;">
-          <li class="pl-5 relative before:content-['—'] before:absolute before:left-0 before:text-muted">Bilingual blog (English / 繁體中文) — same content, both languages.</li>
+          <li class="pl-5 relative before:content-['—'] before:absolute before:left-0 before:text-muted">Moved my AI stack from a single server to a three-tier setup — dev, production, and a shared AI + data layer.</li>
           <li class="pl-5 relative before:content-['—'] before:absolute before:left-0 before:text-muted">Site rebuild around writing rather than agent demos.</li>
         </ul>
       </section>
@@ -41,7 +40,7 @@ const lastUpdated = '2026-05-28';
         <ul class="space-y-3 text-text leading-relaxed" style="font-size: 1.0625rem;">
           <li class="pl-5 relative before:content-['—'] before:absolute before:left-0 before:text-muted">MCP server design patterns at scale — discovery, versioning, security boundaries.</li>
           <li class="pl-5 relative before:content-['—'] before:absolute before:left-0 before:text-muted">Hybrid retrieval (vector + lexical + rerank) trade-offs in mixed-language corpora.</li>
-          <li class="pl-5 relative before:content-['—'] before:absolute before:left-0 before:text-muted">Operational economics of running multiple production AI agents on a single VPS.</li>
+          <li class="pl-5 relative before:content-['—'] before:absolute before:left-0 before:text-muted">Cost and performance tuning of self-hosted inference and embeddings.</li>
         </ul>
       </section>
 

@@ -16,19 +16,12 @@ export async function getStaticPaths() {
 const { post, slug } = Astro.props;
 const { Content } = await render(post);
 
-const allPosts = await getCollection('blog');
-const zhSlug = `zh-tw/${slug}`;
-const hasZhVersion = allPosts.some(p => p.id === zhSlug);
-
 const formatDate = (d: Date) => d.toLocaleDateString('en-NZ', { year: 'numeric', month: 'long', day: 'numeric' });
 ---
 <BaseLayout title={post.data.title} description={post.data.description}>
   <article class="max-w-2xl mx-auto px-6 sm:px-8 py-24">
     <div class="flex items-baseline justify-between mb-16 text-sm">
       <a href="/writing" class="text-muted hover:text-ink no-underline">← Writing</a>
-      {hasZhVersion && (
-        <a href={`/zh-tw/writing/${slug}`} class="text-muted hover:text-ink no-underline">中文 →</a>
-      )}
     </div>
 
     <!-- Article header -->
@@ -69,7 +62,7 @@ const formatDate = (d: Date) => d.toLocaleDateString('en-NZ', { year: 'numeric',
     <div class="mt-14">
       <div class="border-y border-rule py-10 text-center">
         <h3 class="font-serif text-ink mb-2" style="font-size: 1.5rem; font-weight: 500;">Like this? Get the next post by email.</h3>
-        <p class="text-muted text-sm mb-5">No promotions. Unsubscribe anytime. Bilingual (EN + 繁體中文).</p>
+        <p class="text-muted text-sm mb-5">No promotions. Unsubscribe anytime.</p>
         <a href="/contact#subscribe" class="btn-primary inline-block no-underline">Subscribe →</a>
       </div>
 
